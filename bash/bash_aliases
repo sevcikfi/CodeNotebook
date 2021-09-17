@@ -1,0 +1,14 @@
+#linux workflow aliases by Hayaka Kayori @ 2021
+# protect cp, mv, rm command with confirmation + verbose
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+
+#ls aliases
+
+alias ls='ls -F'  
+alias lsa='ls -Ash'
+alias ll='ls -lsh'  
+alias la='ls -lAsh'
+
+#
