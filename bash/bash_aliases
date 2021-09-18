@@ -3,12 +3,21 @@
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
+#make directory inside directory
+alias mkd='mkdir -pv'
 
 #ls aliases
 
-alias ls='ls -F'  
-alias lsa='ls -Ash'
-alias ll='ls -lsh'  
-alias la='ls -lAsh'
+alias ls='ls -F --color=auto' 
+alias la='ls -Ash' 
+alias ll='ls -lAsh' 
+alias lt='ls -lAsSh'
 
-#
+#myip from ipinfo.io
+alias myip='curl ipinfo.io/ip'
+
+#tar
+alias untar='tar -zxvf'
+
+
+
