@@ -7,11 +7,12 @@ tricks and other useful info.
 ## TODO: write more
 
 
-##Netiquette aka RFC 1855
+## Netiquette aka RFC 1855
 
-#Rules
+# Rules
 
-#Technical specification
+# Technical specification
+
 [According to](www.ietf.org/rfc/rfc1855.txt) taking into account the environtment
 of 1995 and the state of GUI/internet browsers, in email communication
 line length shall be limit to fewer than **65 characters** and standard
