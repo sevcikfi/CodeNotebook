@@ -14,10 +14,11 @@ git config --global core.ui auto
 git config --global core.editor nano
 git config --global init.defaultBranch main
 `
+
 For local repos to remember name and password/token:
 `
 git config --global credential.username
-git config --global credential.helper
+git config --global credential.helper store
 `
 
 
