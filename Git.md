@@ -30,7 +30,17 @@ git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
 ```
 ## How to start repo/pull from online host e.g. Github/Gitlab
 
-copy that for quick tut on GH
+TODO: ~~copy that for quick tut on GH~~
+
+```
+echo "# Your Repo Here" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin remote.repo.url.git
+git push -u origin main
+```
 
 ## sos
 
