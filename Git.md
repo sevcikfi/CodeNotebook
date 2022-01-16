@@ -7,7 +7,7 @@
 --system for /etc/, --global for HOME/~/.gitconfig and
 --local in .git folder in your repo
 
-Basic setup (commit editor nano, default branch main):
+### Basic setup (commit editor nano, default branch main):
 ```
 git config --global user.name "name"
 git config --global user.email person@example.com
@@ -32,7 +32,7 @@ git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
 
 copy that for quick tut on GH
 
-## sos
+## Sos for the stuff
 
 [Official Git website](https://git-scm.com/book/en/v2/),
 [Github tutorial](https://docs.github.com/en/get-started/quickstart) and
