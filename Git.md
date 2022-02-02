@@ -42,6 +42,19 @@ git remote add origin remote.repo.url.git
 git push -u origin main
 ```
 
+### Undo last commit
+
+```
+git push -f origin HEAD^:master
+```
+
+or 
+
+```
+git rebase -i HEAD~2
+git push origin +branchName --force
+```
+
 ## Sos for the stuff
 
 [Official Git website](https://git-scm.com/book/en/v2/),
