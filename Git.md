@@ -55,6 +55,13 @@ git rebase -i HEAD~2
 git push origin +branchName --force
 ```
 
+or
+
+```
+git reset --hard HEAD^
+git push origin -f
+```
+
 ## Sos for the stuff
 
 [Official Git website](https://git-scm.com/book/en/v2/),
