@@ -9,9 +9,10 @@ alias mkd='mkdir -pv'
 #ls aliases
 
 alias ls='ls -F --color=auto' 
-alias la='ls -Ash' 
-alias ll='ls -lAsh' 
-alias lt='ls -lAsSh'
+alias la='ls -Ah' 
+alias ll='ls -lah' 
+alias lsa='ls -lasSh'
+alias lt='ls -lahS'
 
 #myip from ipinfo.io
 alias myip='curl ipinfo.io/ip'
