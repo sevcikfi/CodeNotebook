@@ -10,7 +10,7 @@
 ### Basic setup (commit editor nano, default branch main):
 ```
 git config --global user.name "name"
-git config --global user.email person@example.com
+git config --global user.email "person@example.com"
 git config --global core.ui auto
 git config --global core.editor nano
 git config --global init.defaultBranch main

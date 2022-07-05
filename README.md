@@ -6,6 +6,7 @@ tricks and other useful info.
 
 ## TODO: write more
 
+## TO-REMOVE: bash/dotfile -> new repo 
 
 ## Netiquette aka RFC 1855
 
