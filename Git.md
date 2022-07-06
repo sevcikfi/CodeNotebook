@@ -8,7 +8,7 @@
 --local in .git folder in your repo
 
 ### Basic setup (commit editor nano, default branch main):
-```
+```bash
 git config --global user.name "name"
 git config --global user.email "person@example.com"
 git config --global core.ui auto
@@ -16,12 +16,12 @@ git config --global core.editor nano
 git config --global init.defaultBranch main
 ```
 For local repos to remember name and password/token:
-```
+```bash
 git config --global credential.username
 git config --global credential.helper store
 ```
 To set VS Code as preferred git merge/diff:
-```
+```bash
 git config --global merge.tool vscode
 git config --global mergetool.vscode.cmd 'code --wait $MERGED
 
@@ -32,7 +32,7 @@ git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
 
 TODO: ~~copy that for quick tut on GH~~
 
-```
+```bash
 echo "# Your Repo Here" >> README.md
 git init
 git add README.md
@@ -44,20 +44,20 @@ git push -u origin main
 
 ### Undo last commit
 
-```
+```bash
 git push -f origin HEAD^:master
 ```
 
 or 
 
-```
+```bash
 git rebase -i HEAD~2
 git push origin +branchName --force
 ```
 
 or
 
-```
+```bash
 git reset --hard HEAD^
 git push origin -f
 ```
