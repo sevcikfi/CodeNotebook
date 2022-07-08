@@ -28,4 +28,5 @@ To compile `(g)cc hello-world1.c`, to run `./a.out` or `gcc -o <output file> <so
 
 ## Resources 
 
-[MFF UK Devnull-cz lecture notes in English]([https://](https://github.com/devnull-cz/c-prog-lang)), [here as markdown notes](https://github.com/devnull-cz/c-prog-lang/tree/notes) + [github repo]([https://](https://github.com/devnull-cz/c-prog-lang))
+[MFF UK Devnull-cz lecture notes in English]([https://](https://github.com/devnull-cz/c-prog-lang)), [here as markdown notes](https://github.com/devnull-cz/c-prog-lang/tree/notes) + [github repo]([https://](https://github.com/devnull-cz/c-prog-lang))  
+
