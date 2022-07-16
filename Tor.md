@@ -80,8 +80,8 @@ systemctl reload nginx
 
 [2] some other sos
 
-[3] Kenny vid
+[3] Kenny vid#1
 
-[4] Kenny vid
+[4] Kenny vid#2
 
 [5] https://medium.com/privacyguides/securing-services-with-tor-and-alt-svc-43ebf43dd5e2
