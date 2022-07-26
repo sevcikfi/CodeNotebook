@@ -1,4 +1,4 @@
-# Tor 
+# Tor
 
 ## Usage
 
@@ -10,13 +10,13 @@ TODO: write config hint for setting up a node
 
 ### Add official Tor repo
 
-```
+```shell
 code here
 ```
 
 and install keyring for auto-updating **those** keys
 
-```
+```shell
 apt install tor deb.torproject.org-keyring
 ```
 
@@ -28,7 +28,7 @@ ORPort, DirPort, Control port + nyx
 
 To apply setting:
 
-```
+```shell
 systemctl restart tor
 ```
 
@@ -36,7 +36,7 @@ and enjoy!
 
 ### Hidden service settings
 
-```
+```shell
 HiddenServiceDir /var/lib/tor/service1/
 HiddenServiceVersion 3
 HiddenServicePort 443 127.0.0.1:443
@@ -47,7 +47,7 @@ SafeLogging 1
 
 To apply setting:
 
-```
+```shell
 systemctl restart tor
 ```
 
@@ -57,7 +57,7 @@ and enjoy!
 
 Add the following into `server { ... }` block in Nginx (or alternative webserver):
 
-```
+```json
 add_header Alt-Svc 
   'h2="2tjcxjzxgql6wilo3bu777pkvigx2wqwauxf7lyvvmsotjgrqiwwg7id.onion:443";
   ma=86400;
@@ -70,11 +70,13 @@ add_header Alt-Svc
 
 Finish by reloading your server and enjoy!
 
-```
+```shell
 systemctl reload nginx
 ```
 
 ---
+
+## Sources
 
 [1] Official tor website
 
@@ -84,4 +86,4 @@ systemctl reload nginx
 
 [4] Kenny vid#2
 
-[5] https://medium.com/privacyguides/securing-services-with-tor-and-alt-svc-43ebf43dd5e2
+[5] [Guide](https://medium.com/privacyguides/securing-services-with-tor-and-alt-svc-43ebf43dd5e2) on .onion forward
