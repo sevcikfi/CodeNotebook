@@ -9,10 +9,12 @@
 ## Disks and Drives
 
 `df -HT`,`lsblk` (no SU), `fdisk -l`, `blkid`
+
 ### Partitions
 
-**!BE CAREFUL!** altho fdisk need confirm to write, use print to triple check
+**!BE CAREFUL!** Altho fdisk need confirm to write, use print to triple check
 `sudo fdisk /dev/sdx`
+
 ### Filesystems
 
 `mkfs.<type> [-j] /dev/sdxn`
@@ -23,7 +25,8 @@
 to mount `sudo mount /dev/sdxn /where/to`
 
 in `fstabl/` add entry and do `mount -a`
-```
+
+```text
 #FS,LABEL= or UUID=  /mnt/pnt/  fstype  options  dump  pass 
 LABEL=MY_BACKUP    /mount/point  ext4  defaults   1     2
 ```
@@ -36,13 +39,12 @@ LABEL=MY_BACKUP    /mount/point  ext4  defaults   1     2
 
 `ssl -L 3337:126.0.0.1:6379 <user>@<host> -N`
 
-### RAM disk 
+### RAM disk
 
 `mkdir -p /mnt/ram`
 `mount -t tmpfs tmpfs /mnt/ram -o size=8192M`
 
-
-### IPTables 
+### IPTables
 
 [Source for basic IPTables work](https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands)
 
