@@ -6,7 +6,7 @@
 --system for /etc/, --global for HOME/~/.gitconfig and
 --local in .git folder in your repo
 
-### Basic setup (commit editor nano, default branch main):
+### Basic setup (commit editor nano, default branch main)
 
 ```bash
 git config --global user.name "name"

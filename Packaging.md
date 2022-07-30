@@ -1,7 +1,9 @@
-# HOW-TO packages in Linux 
+# HOW-TO packages in Linux
 
-**TODO: read the links and write simple tutorial**
+**TODO**: read the links and write simple tutorial
+
 ----------
+
 ## Sosesu
 
 [Internal pointers](https://www.internalpointers.com/post/build-binary-deb-package-practical-guide)
