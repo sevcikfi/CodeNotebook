@@ -8,19 +8,21 @@ FIX: use Anaconda or virtualenv with requirements.txt
 
 ```bash
 #create env
-python3 -m venv /path/to/new/virtual/environment
+python -m venv /path/to/new/virtual/environment
 #active the env
 source env/bin/activate
-#to deactivate
+#deactivate
 deactivate
-#to export package list
-python3 -m pip freeze > requirement.txt
+#export package list
+python -m pip freeze > requirement.txt
+#install from list
+python -m pip install -r /path/to/requirements.txt
 ```
 
 ## Basics
 
 ### print formater
 
-[see pyformat website]([https://](https://pyformat.info))
+[see pyformat website](https://pyformat.info)
 
 ## Advanced
