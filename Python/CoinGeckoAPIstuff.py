@@ -1,8 +1,6 @@
 """
 
 """
-
-from heapq import merge
 import pandas as pd
 
 def download_data(days=365):
@@ -19,7 +17,6 @@ def parse_json(raw_json):
     return merged.set_index("time")
     
 if __name__ == "__main__":
-    print("Ohayou ございます！")
     js = download_data()
     data = parse_json(js)
 

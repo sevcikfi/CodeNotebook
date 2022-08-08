@@ -1,5 +1,3 @@
-# type: ignore
-
 import matplotlib.pyplot as plt
 import math                             # Používáme goniometrické funkce
 
@@ -9,7 +7,7 @@ xs = [0.1 * i for i in range(100)]      # Hodnoty x od 0 do 10 s krokem 0.1
 ys1 = [math.sin(x) for x in xs]         # Funkce sin(x)
 
 plt.plot(xs, ys1)                       # Vykreslení grafu
-plt.show()                              # Zobrazení grafu
+#plt.show()                              # Zobrazení grafu
 
 
 """ Více grafů v jednom panelu """
@@ -17,9 +15,10 @@ ys2 = [math.tan(x) for x in xs]         # Funkce tangens
 
 plt.plot(xs, ys1)
 plt.plot(xs, ys2)
-plt.show()                              # Ukáže graf. POZOR, Pro pokračování provádění kódu je potřeba graf zavřít (pokud nepoužíváte interaktivní mód plt.ion())
+#plt.show()                              # Ukáže graf. POZOR, Pro pokračování provádění kódu je potřeba graf zavřít (pokud nepoužíváte interaktivní mód plt.ion())
 
 """ Popisky os a grafu"""
+plt.clf()
 plt.plot(xs, ys1, color="red", linestyle=":", label="$\\sin(x)$")
 plt.plot(xs, ys2, "b-.", label="$\\tan(x)$")
 plt.xlabel("$x$")                       # Popisky os (lze použít příkazy LaTeXu uvozené znaky $$)
@@ -27,10 +26,12 @@ plt.ylabel("$y$")
 plt.title("Goniometrie")                # Popisek grafu
 plt.ylim(-3, 3)                         # Meze osy y
 plt.legend()                            # Zobrazí legendu
-plt.savefig("d:\\obrazek.pdf")          # Uloží obrázek do souboru
-plt.show()
+#plt.savefig("d:\\obrazek.pdf")          # Uloží obrázek do souboru
+#plt.savefig("obrazek.pdf")          # Uloží obrázek do souboru
+#plt.show()
 
 """ Více panelů """
+plt.clf()
 plt.subplot(211)                        # Číslo vyjadřuje počet řádků, počet sloupců a pořadí grafu
 plt.plot(xs, ys1)
 plt.xlabel("$x$")
@@ -43,7 +44,9 @@ plt.ylabel("$\\tan(x)$")
 plt.ylim(-3, 3)
 
 plt.suptitle("Goniometrie")             # Hlavní nadpis celého grafu
-plt.show()
+#plt.show()
+#plt.savefig("multiple-panels.jpg")
+plt.clf()
 
 ####################################################
 ## Contour - colour maps
@@ -66,6 +69,7 @@ Z = f(X, Y)                             # numpy is powerful and can handle this
 
 # cmap specifies one of the colour map. All colour maps are given in
 # https://matplotlib.org/stable/tutorials/colors/colormaps.html
-plt.contourf(X, Y, Z, numContours, cmap=cm.hot) 
+plt.contourf(X, Y, Z, numContours, cmap=cm.hot) # type: ignore
 plt.colorbar()                          # Legend for the contour graph
-plt.show()
+#plt.show()
+#plt.savefig("contour.jpg")
