@@ -26,3 +26,17 @@ python -m pip install -r /path/to/requirements.txt
 [see pyformat website](https://pyformat.info)
 
 ## Advanced
+
+### CPU isn't alone
+
+*We have walked through the most popular forms of concurrency. But the question remains - when should choose which one? It really depends on the use cases. From my experience (and reading), I tend to follow this pseudo code:*
+
+```Python
+if io_bound:
+    if io_very_slow:
+        print("Use Asyncio")
+    else:
+        print("Use Threads")
+else:
+    print("Multi Processing")
+```
