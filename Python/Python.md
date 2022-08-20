@@ -40,3 +40,10 @@ if io_bound:
 else:
     print("Multi Processing")
 ```
+
+For summary, see [Thread #0] bellow or read the write-up in [ComSci](ComputerScience.md).
+In short, async/awant for slower IO, Thread(PoolExecutor) for faster IO, multiprocessing to kill the GIL and use all CPUs.
+
+## Sources
+
+[Threads #0](https://leimao.github.io/blog/Python-Concurrency-High-Level/)
