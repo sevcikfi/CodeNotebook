@@ -2,6 +2,10 @@
 
 ## Baiscs
 
+### Ssh through another host
+
+`ssh -J host1 host2`
+
 ### generate keys
 
 `ssh-keygen` generates private & public key, optional to add passphrase, option -t, -b, -f for cypher, bytes, filename
