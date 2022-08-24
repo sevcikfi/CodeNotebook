@@ -19,6 +19,19 @@ python -m pip freeze > requirement.txt
 python -m pip install -r /path/to/requirements.txt
 ```
 
+### Jupyther noteboks
+
+Linux needs `python3-dev` package and then run `pip install jupyter` and wait for 10mins, then run:
+
+```bash
+# Replace <PORT> with your selected port number
+jupyter notebook --no-browser --port=<PORT>
+# Replace <PORT> with the port number you selected in the above step
+# Replace <REMOTE_USER> with the remote server username
+# Replace <REMOTE_HOST> with your remote server address
+ssh -L <LOCAL-PORT>:localhost:<REMOTE-PORT> <REMOTE_USER>@<REMOTE_HOST>
+```
+
 ## Basics
 
 ### print formater
