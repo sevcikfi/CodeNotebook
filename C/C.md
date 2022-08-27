@@ -1,5 +1,6 @@
 # C programming language notes
 
+WRITE: quick summary
 
 ## Running code
 
@@ -7,8 +8,10 @@
 
 To compile `(g)cc hello-world1.c`, to run `./a.out` or `gcc -o <output file> <source file(s)>` for specific output
 
-## <header>
+## !Header-name-to-FIX! xd
+
 ### Operators
+
 `+`,`-`,`*`,`/`,`%`,
 `=`,`+=`,`-=`,`*=`,`/=`,
 `++`,`--`,
@@ -23,10 +26,23 @@ To compile `(g)cc hello-world1.c`, to run `./a.out` or `gcc -o <output file> <so
 ### Comments
 
 `/* one line comment */` or `// one line comment from C99+`
+
+## Advanced
+
+WRITE:things here
+
+### Los Pointerienos
+
+They evil, sometimes
+
+### Structs
+
+Like classes but *stacks* and also faster!
+
 ### Makefiles
 
+WRITE: quick summary but it's some `cmake && make && install` *magic*
 
-## Resources 
+## Resources
 
-[MFF UK Devnull-cz lecture notes in English](https://github.com/devnull-cz/c-prog-lang), [here as markdown notes](https://github.com/devnull-cz/c-prog-lang/tree/notes) + [github repo](https://github.com/devnull-cz/c-prog-lang)  
-
+[MFF UK Devnull-cz lecture notes in English](https://github.com/devnull-cz/c-prog-lang), [here as markdown notes](https://github.com/devnull-cz/c-prog-lang/tree/notes) + [github repo](https://github.com/devnull-cz/c-prog-lang)
