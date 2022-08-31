@@ -1,7 +1,6 @@
 /*
  * compile with and without -DPARENS and see the difference.
  */
-
 #include <stdio.h>
 
 #ifdef PARENS
