@@ -17,6 +17,4 @@ int main(void)
     int dyn[n];
     size_t dynSize = sizeof(dyn) / sizeof (dyn[0]);
 	printf("Dynam size: %zu, dynam length: %zu\n", sizeof(dyn), dynSize);
-
-	
 }
