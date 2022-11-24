@@ -69,4 +69,4 @@ git push origin -f
 
 ## Sos for the stuff
 
-[Official Git website](https://git-scm.com/book/en/v2/), [Github tutorial](https://docs.github.com/en/get-started/quickstart) and [GitHub cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet/)
+[Official Git website](https://git-scm.com/book/en/v2/), [Github tutorial](https://docs.github.com/en/get-started/quickstart) and [GitHub cheat-sheet](https://training.github.com/downloads/github-git-cheat-sheet/)

@@ -37,7 +37,7 @@ They evil, sometimes
 
 ### Structs
 
-Like classes but *stacks* and also faster!
+Like classes but *on stack*, everything public and also faster!
 
 ### Makefiles
 

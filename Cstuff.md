@@ -2,7 +2,7 @@
 
 likely more notes, tricks etc. might be in their respective mds or folders
 
-### Spooky stuff
+## Spooky stuff
 
 - Global Variables
 - Macros

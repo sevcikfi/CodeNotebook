@@ -13,6 +13,7 @@
 `screen` and `CTRL+A D`
 
 `screen -r`
+
 ### Tmux
 
 ## Disks and Drives
@@ -33,7 +34,7 @@
 
 to mount `sudo mount /dev/sdxn /where/to`
 
-in `fstabl/` add entry and do `mount -a`
+in `/etc/fstab` add entry and do `mount -a`
 
 ```text
 #FS,LABEL= or UUID=  /mnt/pnt/  fstype  options  dump  pass 

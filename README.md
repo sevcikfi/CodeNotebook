@@ -1,6 +1,6 @@
-# Code Notebok
+# Code Notebook
 
-Snipets of code and basic setup for Linux machine and various bits,
+Snippet of code and basic setup for Linux machine and various bits,
 tricks and other useful info.
 
 ## TODO: write more
