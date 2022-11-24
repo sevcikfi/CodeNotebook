@@ -19,7 +19,7 @@ python -m pip freeze > requirement.txt
 python -m pip install -r /path/to/requirements.txt
 ```
 
-### Jupyther noteboks
+### Jupyter notebooks
 
 Linux needs `python3-dev` package and then run `pip install jupyter` and wait for 10mins, then run:
 
@@ -34,7 +34,7 @@ ssh -L <LOCAL-PORT>:localhost:<REMOTE-PORT> <REMOTE_USER>@<REMOTE_HOST>
 
 ## Basics
 
-### print formater
+### print formatter
 
 [see pyformat website](https://pyformat.info)
 
@@ -46,14 +46,14 @@ ssh -L <LOCAL-PORT>:localhost:<REMOTE-PORT> <REMOTE_USER>@<REMOTE_HOST>
 4. `^` instead of `**`
 5. Empty mutable argument defaults instead of `None`
 6. Not using comprehensions (excessive for-loops), list[], dict{:}, set{}, generator()
-7. Unreadible flexing 10X dev code
+7. Unreadable flexing 10X dev code
 8. Equality checking #1: `==` for `isInstance()` (type checking)
 9. Equality checking #2: `==` for `is` identity
 10. Equality checking #3: `!= 0` for `bool()` built-in
-11. Doing stuff maually instead of using libearies such as *numpy, matplotlib, Pandas, Scipy, PyTorch, numpa...*
+11. Doing stuff manually instead of using libraries such as *numpy, matplotlib, Pandas, Scipy, PyTorch, numba...*
 12. Loop #0: Manual for-loops instead of built-in or library function (*numpy* for arrays etc)
 13. Loop #1: `range(len(a))` instead *for each*
-14. Loop #2: `enumarate(a)` to get both index and element
+14. Loop #2: `enumerate(a)` to get both index and element
 15. Loop #3: `zip(a,b)` for two objects, `enumerate(zip(a,b))` if index required
 16. Loop #4: `for k in d.key()` instead of just `for k in d`
 17. Loop #5: `for k, v in d.item()` instead of doing so manually
@@ -70,8 +70,8 @@ Most basic logging can be done with native *logging* module:
 ```Python
 import logging
 level = logging.DEBUG #lowest logging level
-format = '[%(levelname)s] %(asctime)s - %(message)s' #message format
-logging.deubg("debug message") #debug/info/error
+format = '[%(level_name)s] %(asctime)s - %(message)s' #message format
+logging.debug("debug message") #debug/info/error
 logging.basicConfig(level=level, format=format)
 #prints [DEBUG] 2022-08-23 2:15:22 - debug message
 ```
@@ -93,7 +93,7 @@ else:
 ```
 
 For summary, see [Thread #0] bellow or read the write-up in [ComSci](ComputerScience.md).
-In short, async/awant for slower IO, Thread(PoolExecutor) for faster IO, multiprocessing to kill the GIL and use all CPUs.
+In short, async/await for slower IO, Thread(PoolExecutor) for faster IO, multiprocessing to kill the GIL and use all CPUs.
 
 ## Sources
 

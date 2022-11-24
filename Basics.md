@@ -6,6 +6,15 @@
 
 `chown -Rv user[:group] FILE`
 
+## Multiple TTYs
+
+### Screen
+
+`screen` and `CTRL+A D`
+
+`screen -r`
+### Tmux
+
 ## Disks and Drives
 
 `df -HT`,`lsblk` (no SU), `fdisk -l`, `blkid`
