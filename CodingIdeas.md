@@ -106,12 +106,9 @@ Průvodce labyrintem algoritmů: http://pruvodce.ucw.cz/
     - nástroj pro testování REST api, GraphQL api
     - služba pro ukládání souborů (object storage - amazon S3 apod.)
 
-
 ------
 
 from [Jan Hamáček, prof. from MFF UK](https://www2.karlin.mff.cuni.cz/~hamacek/programovani.php), author Tomáš Hollan MFF UK
-
-
 
 DIFF
    čte dva soubory, porovnává řádky (stejný/různý) a vytvoří HTML-soubor znázorňující rozdíly
@@ -180,7 +177,6 @@ Analýza kurzů akcií 2
    Pro známé hodnoty K1..K8, D1..D4 je snadné spočítat výsledný zisk nebo ztrátu
    (předpokládejme, že v posledním dni datového souboru všechny akcie prodáme).
    Program bude hledat hodnoty K1..K8, D1..D4, při kterých by zisk byl největší.
-
 
 Cross-Reference Pascalu
    načte zdrojový program v pascalu a vytiskne tabulku,
@@ -320,5 +316,3 @@ Beamer
    a vyrobí z něj \TeX-ový zdrojový kód presentace v Beameru.
 
 Hra Miny
-
-
