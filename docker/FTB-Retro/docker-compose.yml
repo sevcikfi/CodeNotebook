@@ -1,29 +1,22 @@
 version: "3.9"
 
 services:
-  ftb-retro-smp: 
-    #container_name: FTB-Retro-SMP
-    container_name: "ftb-retro-test"
-    #image: openjdk:8u212-jdk
-    #image: openjdk:8u342-jdk-slim
-    #image: FTB-Retro-SMP:latest
+  ftb-retro-smp:
+    container_name: FTB-Retro-SMP
     build: .
     volumes:
       - type: bind
-        #source: /home/hayaka/FTB-Retro/
-        source: /home/hayaka/test/
+        source: /home/hayaka/FTB-Retro/
         target: /data
     environment:
-      - MAXMEM=2G
+      - MYKEY=2G
     ports:
     - "25565:25565"
     #restart: unless-stopped
     restart: on-failure:3
+    tty: true
     #net: "host" # maybe use instead of biding ports
     command: >
-      bash -c "echo "Test"
+      bash -c "echo "Feed\ The\ Beast\ Insanity!"
+      && java -Xmx1G -Xms1G -jar craftbukkit.jar
       "
-         
-      
-      
-      
