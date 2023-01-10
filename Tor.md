@@ -78,12 +78,9 @@ systemctl reload nginx
 
 ## Sources
 
-[1] Official tor website
-
-[2] some other sos
-
-[3] Kenny vid#1
-
-[4] Kenny vid#2
-
-[5] [Guide](https://medium.com/privacyguides/securing-services-with-tor-and-alt-svc-43ebf43dd5e2) on .onion forward
+01. Official tor website
+02. some other sos
+03. Kenny vid#1
+04. Kenny vid#2
+05. [Guide](https://medium.com/privacyguides/securing-services-with-tor-and-alt-svc-43ebf43dd5e2) on .onion forward
+06. [Vanity url tutorial](https://opensource.com/article/19/8/how-create-vanity-tor-onion-address)

@@ -6,7 +6,7 @@ tag: IT/DevOps CodeNotebook
 
 # Docker
 
-- *le container hellscape*
+Summary::*le container hellscape*
 
 ## Building image
 
@@ -226,4 +226,5 @@ networks:
 1. [Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 2. [Dockerfile docs](https://docs.docker.com/engine/reference/builder/)
 3. [Compose docs](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes)
-4. [Networking]([https://](https://docs.docker.com/compose/networking/))
+4. [Networking](https://docs.docker.com/compose/networking/)
+5. [YT](https://www.youtube.com/watch?v=pTFZFxd4hOI)
