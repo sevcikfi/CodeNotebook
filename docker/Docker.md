@@ -10,7 +10,7 @@ tag: IT/DevOps CodeNotebook
 
 ## Building image
 
-`docker build -t myApp /path/to/dockerfile`
+`docker build -t myApp /path/to/dockerfile` or `docker-compose build`
 
 - \-t for "name tag"
 
