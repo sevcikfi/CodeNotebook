@@ -4,6 +4,7 @@ services:
   ftb-retro-smp:
     container_name: FTB-Retro-SMP
     build: .
+    #image: ftb-retro
     volumes:
       - type: bind
         source: /home/hayaka/FTB-Retro/
@@ -12,8 +13,7 @@ services:
       - MYKEY=2G
     ports:
     - "25565:25565"
-    #restart: unless-stopped
-    restart: on-failure:3
+    restart: unless-stopped
     tty: true
     #net: "host" # maybe use instead of biding ports
     command: >
