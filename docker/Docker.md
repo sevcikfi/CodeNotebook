@@ -15,16 +15,20 @@ tag: IT/DevOps CodeNotebook
 - \-t for "name tag"
 
 `docker images` to list images
+
 `docker image rm <full:name or id>` to rm image
 
 ## Composing image
 
 `docker-compose up` for running docker-compose on current dir
+
 `docker-compose down` to shutdown the containers
 
 ## Running it
 
 `docker ps` to list containers (`-a` for all)
+
+`docker pull` pulls image from remote repo
 
 `docker run myApp-image`
 
@@ -42,11 +46,22 @@ tag: IT/DevOps CodeNotebook
 - \-w workdir inside the container
 
 `docker start <name or ID>` to start specific container
+
 `docker restart <name or ID>` to restart
-`docker stop <name or ID>` to stop
+
+`docker stop <name or ID>` to stop running container safely
+
+`docker kill` to stop immediately
+
 `docker rm <name or ID>` to remove
 
 `docker exec -it <name>` for getting inside
+
+### Docker hub
+
+`docker login` to login docker, `docker commit <container-id> <username(repo)/image-name>` and `docker push` to push it there - very similar to git
+
+---
 
 ## Dockerfile
 
@@ -67,15 +82,18 @@ tag: IT/DevOps CodeNotebook
 ### ARG vs ENV
 
 `ENV ENV-STUFF=XYZ`
+
 `ARG BUILD-ARG`
 
 ### ENTRYPOINT vs CMD
 
-`ENTRYPOINT`
+`ENTRYPOINT ["command"]` - makes the container into a *binary*, e.g. *`ENTRYPOINT ["/bin/cat"]`* and *`docker run img /etc/passwd`* would cat out the content of `passwd`
 
-`CMD ["execute", "params", "paramsX"]`
+`CMD ["execute", "params", "paramsX"]` runs this command on start up
 
-Note: command from (docker-)compose.yml **overrides** *CMD*
+Note: command from (docker-)compose.yml **overrides** *CMD*, similar to after image name on cli
+
+---
 
 ## docker-compose.yml
 
@@ -88,10 +106,8 @@ services:
     volumes:
       - ./path/in/host:/path/in/container
     environment:
-      - MYSQL_DATABASE=db
-      - MYSQL_USER=django
-      - MYSQL_PASSWORD=test
-      - MARIADB_ROOT_PASSWORD=root
+      - some_var=for-the-image
+      - some_other_var=for-the-image
   web:
     build:
       context: where/docker/file
@@ -112,9 +128,9 @@ services:
       - "name-of-service"
 ```
 
-### volumes
+### Volumes
 
-from *Compose docs*
+from *Compose docs*:
 
 ```yaml
 volumes:
@@ -132,9 +148,9 @@ volumes:
 
 ### Networking
 
-Some examples:
+examples from docs:
 
-### Basic
+#### Basic
 
 ```yaml
 services:
@@ -147,6 +163,45 @@ services:
     ports:
       - "8001:5432"
 ```
+
+#### Aliases
+
+> **Note**: A network-wide alias can be shared by multiple containers, and even by multiple services. If it is, then exactly which container the name resolves to is not guaranteed.
+
+As such, it is **HIGHLY RECOMMEND** to use *aliases* over *static IPs*.
+
+> In the example below, service `frontend` will be able to reach the `backend` service at the hostname `backend` or `database` on the `back-tier` network, and service `monitoring` will be able to reach same `backend` service at `db` or `mysql` on the `admin` network.
+
+```yaml
+services:
+  frontend:
+    image: awesome/webapp
+    networks:
+      - front-tier
+      - back-tier
+
+  monitoring:
+    image: awesome/monitoring
+    networks:
+      - admin
+
+  backend:
+    image: awesome/backend
+    networks:
+      back-tier:
+        aliases:
+          - database
+      admin:
+        aliases:
+          - mysql
+
+networks:
+  front-tier:
+  back-tier:
+  admin:
+```
+
+#### Static IPs
 
 ```yaml
 services:
@@ -168,5 +223,7 @@ networks:
 
 ## Sources
 
-1. [Dockerfile docs](https://docs.docker.com/engine/reference/builder/)
-2. [Compose docs](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes)
+1. [Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+2. [Dockerfile docs](https://docs.docker.com/engine/reference/builder/)
+3. [Compose docs](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes)
+4. [Networking]([https://](https://docs.docker.com/compose/networking/))
