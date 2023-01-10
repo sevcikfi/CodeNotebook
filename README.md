@@ -1,12 +1,24 @@
+---
+alias:
+tag: IT CodeNotebook MOC
+---
+
 # Code Notebook
 
-Snippet of code and basic setup for Linux machine and various bits,
-tricks and other useful info.
+Snippet of code and basic setup for Linux machine and various bits, tricks and other useful info, gathered and documented over the years of dealing with spaghetti of Computer-related fields.
 
-## TODO: write more
+## Meta 
 
-C0d€ m0ar!!!
+### TODO
 
-## TO-REMOVE
+- [ ] clean up various mds
+- [ ] finish **TODO** in various files
+- [ ] convert some of the into full fledged Obsidian notes
+- [ ] look up old ML course notes
+- [ ] finish reading */dev/null-cz* tutorial on C
+- [ ] as always *C0d€ m0ar!!!* 🥵
 
-bash/dotfile -> new repo, bash/ should be used only for bash scripts
+### TO-REMOVE
+
+- [x] bash/dotfile -> new repo (done in June 2022)
+- [ ] bash/ should be used only for bash scripts
