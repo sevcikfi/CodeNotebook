@@ -4,7 +4,7 @@ services:
   ftb-retro-smp:
     container_name: FTB-Retro-SMP
     build: .
-    #image: ftb-retro
+    image: ftb-retro:latest
     volumes:
       - type: bind
         source: /home/hayaka/FTB-Retro/
