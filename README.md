@@ -7,7 +7,7 @@ tag: IT CodeNotebook MOC
 
 Snippet of code and basic setup for Linux machine and various bits, tricks and other useful info, gathered and documented over the years of dealing with spaghetti of Computer-related fields.
 
-## Meta 
+## Meta
 
 ### TODO
 
@@ -21,4 +21,4 @@ Snippet of code and basic setup for Linux machine and various bits, tricks and o
 ### TO-REMOVE
 
 - [x] bash/dotfile -> new repo (done in June 2022)
-- [ ] bash/ should be used only for bash scripts
+- [x] bash/ should be used only for bash scripts
