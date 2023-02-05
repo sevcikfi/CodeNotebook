@@ -1,4 +1,4 @@
-//namespace rzikm_CreditTest;
+namespace rzikm_CreditTest;
 
 class Logo
 {
@@ -18,35 +18,40 @@ line { stroke: rgb(0, 0, 0); stroke-width:2}
     
     public void Execute(string[] args)
     {
-        // TODO: Arg exception
         try
         {
-            if (args.Length != 1) throw new System.ApplicationException("rip");
+            if (args.Length != 1) throw new ArgumentException("Argument error");
+
+            string[] raw = ReadFile(args[0]);
+            List<string> svgLines = new();
+            Parse(raw, svgLines);
+            WriteFile(svgLines.ToArray());
         }
-        catch (System.Exception ex)
+        catch (ArgumentException ex)
         {
             Console.Error.WriteLine(ex);
-            Console.WriteLine("Error rip");
         }
-
     }
-    public void ReadFile(string filepath = "test.logo")
+
+    public string[] ReadFile(string filepath = "test.logo")
     {
-        try {
-            
-            Console.WriteLine("Trying to read file...");
-            foreach (string line in File.ReadLines(filepath))
-            {
-                
-            } // TODO: File exception
-        } catch (System.Exception ex) { 
-            Console.WriteLine(ex);
+        Console.WriteLine("Trying to read file...");
+        try
+        {
+            return File.ReadAllLines(filepath);
+        }
+        catch (System.Exception)
+        {
+            throw new FileException("File error");
         }
     }
 
-    public void Parse(string[] lines){
-        foreach (string line in lines)
-        {
+    public void Parse(string[] toParse, List<string> outLines){
+        List<String> repeat = new();
+        int repeatNum = 0;
+        foreach (string line in toParse)
+        {   
+            
             switch(line.Split(" ")[0])
             {
                 case "penup": 
@@ -61,29 +66,47 @@ line { stroke: rgb(0, 0, 0); stroke-width:2}
                 case "forward": 
                     Console.WriteLine("penup");
                     break;
+                case "repeat":
+                
+                case " ":
+                    
+                case "]":
+                    for (int i = 0; i < repeatNum; i++)
+                    {
+                        Parse(repeat.ToArray(), outLines);
+                    }
+                    break;
 
                 default: 
                     Console.WriteLine("rip");
+                    throw new ParseException("Parse error");
                     break;
             }
         }
     }
 
-    public void WriteOut(string[]? lines = null)
+    public void WriteFile(string[]? lines = null)
     {
         lines ??= new string[]{"<line x1='0' y1='0' x2='35.3553390593274' y2='35.3553390593274' />"};
 
-        using (StreamWriter sw = File.CreateText(FILEOUT))
-            {
-                Console.WriteLine("Started writing file");
-                sw.WriteLine(HEADER);
-                foreach (var line in lines)
-                {
-                    sw.WriteLine(line);
-                }
-                sw.WriteLine(FOOTER);
-                Console.WriteLine("Finished writing file");
-            }
+        try
+        {
+        	using (StreamWriter sw = File.CreateText(FILEOUT))
+        	    {
+        	        Console.WriteLine("Started writing file");
+        	        sw.WriteLine(HEADER);
+        	        foreach (var line in lines)
+        	        {
+        	            sw.WriteLine(line);
+        	        }
+        	        sw.WriteLine(FOOTER);
+        	        Console.WriteLine("Finished writing file");
+        	    }
+        }
+        catch (System.Exception)
+        {
+        
+        	throw;
+        }
     }
-
 }
