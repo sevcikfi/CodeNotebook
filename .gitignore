@@ -77,7 +77,7 @@ __pycache__
 *.ccscc      # Used for versioning
 *.cache
 *.vs
-vs-code/
+.vscode/
 *.user
 
 # Editor left-overs

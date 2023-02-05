@@ -1,0 +1,8 @@
+right 45 
+forward 50 
+right -45 
+penup 
+forward 50 
+pendown 
+right -45 
+forward 50
