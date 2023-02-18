@@ -11,7 +11,7 @@ Snippet of code and basic setup for Linux machine and various bits, tricks and o
 
 ### TODO
 
-- [ ] clean up various mds
+- [x] clean up various mds (SSH,Git and Basics done)
 - [ ] finish **TODO** in various files
 - [ ] convert some of the into full fledged Obsidian notes
 - [ ] look up old ML course notes
