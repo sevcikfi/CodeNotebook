@@ -85,9 +85,56 @@ git clean -fdx
 
 **WARNING**: -x will also remove all ignored files, including ones specified by .gitignore! You may want to use `-n` for preview of files to be deleted.
 
+## Remote repos
+
+### basic bare repo
+
+First, we set up a git user:
+
+```bash
+sudo adduser git
+su git
+cd ~ && mkdir .ssh && chmod 700 .ssh
+touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
+```
+
+Then we append devs' keys into `authorized_keys` and then create the repo directory as follows, convention is to end the name with `.git`.
+
+```bash
+cd /some/dir
+mkdir project.git
+cd project.git
+git init --bare
+```
+
+Now either clone the repo or add the repo as one of your remotes.
+
+```bash
+git remote add origin git@server:/some/dir/project.git
+#or
+git clone git@server:/srv/git/project.git
+```
+
+To secure the `git` user against abuse, prepend each key with following:
+
+```no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty```
+
+And change the shell preventing direct logins
+
+```bash
+cat /etc/shells   # see if git-shell is already in there. If not...
+which git-shell   # make sure git-shell is installed on your system.
+sudo -e /etc/shells  # and add the path to git-shell from last command
+sudo chsh git -s $(which git-shell) #changes the gits shell to git-shell
+```
+
 ## Sos for the stuff
 
 - [Official Git website](https://git-scm.com/book/en/v2/)
 - [Github tutorial](https://docs.github.com/en/get-started/quickstart)
 - [GitHub cheat-sheet](https://training.github.com/downloads/github-git-cheat-sheet/)
 - [Remove unsaved changes](https://stackoverflow.com/questions/14075581/git-undo-all-uncommitted-or-unsaved-changes)
+- [Branching](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) and [rebasing](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+- [Remote branches](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches)
+- [changing remote url](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories)
+- [Setting up basic bare repo](https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server)
