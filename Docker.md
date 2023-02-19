@@ -20,7 +20,7 @@ Summary::*le container hellscape*
 
 ## Composing image
 
-`docker-compose up` for running docker-compose on current dir
+`docker-compose up` for running docker-compose on current dir, use with `-d` to detach from STDIN and `--build` to rebuild the image before trying to run
 
 `docker-compose down` to shutdown the containers
 
@@ -45,7 +45,7 @@ Summary::*le container hellscape*
 - \-u
 - \-w workdir inside the container
 
-`docker start <name or ID>` to start specific container
+`docker start <name or ID>` to start specific container, to run image, `-a` to attach STDOUT, `-i` for STDIN
 
 `docker restart <name or ID>` to restart
 
@@ -55,7 +55,7 @@ Summary::*le container hellscape*
 
 `docker rm <name or ID>` to remove
 
-`docker exec -it <name>` for getting inside
+`docker exec -it <name> <command>` for getting inside, 99.9% times with bash
 
 ### Docker hub
 
@@ -227,4 +227,6 @@ networks:
 2. [Dockerfile docs](https://docs.docker.com/engine/reference/builder/)
 3. [Compose docs](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes)
 4. [Networking](https://docs.docker.com/compose/networking/)
-5. [YT](https://www.youtube.com/watch?v=pTFZFxd4hOI)
+5. [Docker build](https://docs.docker.com/engine/reference/commandline/compose_build/)
+6. [text](https://docs.docker.com/engine/reference/commandline/compose_up/)
+7. [YT](https://www.youtube.com/watch?v=pTFZFxd4hOI)

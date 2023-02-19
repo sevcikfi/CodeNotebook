@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  ftb-retro-smp:
+    container_name: GTNH-2.2.8
+    build: .
+    image: gtnh:2.2.8
+    volumes:
+      - type: bind
+        source: /home/hayaka/GTNH-server/Current-World
+        target: /data/World
+    environment:
+      - MYKEY=2G
+    ports:
+    - "25565:25565"
+    restart: on-failure:3
+    tty: true
+    #net: "host" # maybe use instead of biding ports
+    #command: >
+    #  bash -c "echo "Gregtech\ New\ Horizons\ 2.2.8!""
