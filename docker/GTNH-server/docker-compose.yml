@@ -16,5 +16,7 @@ services:
     restart: on-failure:3
     tty: true
     #net: "host" # maybe use instead of biding ports
-    #command: >
-    #  bash -c "echo "Gregtech\ New\ Horizons\ 2.2.8!""
+    command: >
+      bash -c "echo "Gregtech\ New\ Horizons\ 2.2.8!" && 
+             java -Xms6G -Xmx6G -XX:+UseStringDeduplication -XX:+UseCompressedOops -XX:+UseCodeCacheFlushing -Dfml.readTimeout=180 -jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar nogui
+      "

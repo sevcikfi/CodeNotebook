@@ -20,6 +20,8 @@ Summary::*le container hellscape*
 
 ## Composing image
 
+`docker-compose build` to build all services
+
 `docker-compose up` for running docker-compose on current dir, use with `-d` to detach from STDIN and `--build` to rebuild the image before trying to run
 
 `docker-compose down` to shutdown the containers
@@ -53,7 +55,11 @@ Summary::*le container hellscape*
 
 `docker kill` to stop immediately
 
-`docker rm <name or ID>` to remove
+`docker rm <name or ID>` to remove container
+
+`docker image prune -a` to clean images
+
+`docker system prune` prunes everything
 
 `docker exec -it <name> <command>` for getting inside, 99.9% times with bash
 
