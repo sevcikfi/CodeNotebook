@@ -62,7 +62,7 @@ If you wanna find the fingerprint of particular key, use `ssh-keygen -lvf key/pa
 
 ### Putting public keys on other machine
 
-Public keys need to be added (appended on one new line) to .ssh/authorized_key or special place on particular website e.g. *Github/SSH&GPG keys*, easiest done with `ssh-copy-id -i /key/location] user@host`. If you don't have `copy-id` module installed, you may use the following command for UNIX and Windows respectively:
+Public keys need to be added (appended on one new line) to .ssh/authorized_key or special place on particular website e.g. *Github/SSH&GPG keys*, easiest done with `ssh-copy-id [-i /key/location] user@host`. If you don't have `copy-id` module installed, you may use the following command for UNIX and Windows respectively:
 
 ```bash
 `ssh-keygen && cat $envuserprofile/.ssh/id_rsa.pub | ssh user@linuxserver 'cat >> .ssh/authorized_keys'`
