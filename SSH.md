@@ -20,7 +20,19 @@ If your keys don't live in expected places e.g. `.ssh/key name` or aren't made a
 
 ### Generating keys
 
-`ssh-keygen` generates private & public key, optional to add passphrase, option `-t`, `-b`, `-f` for cypher, bytes, filename
+`ssh-keygen` generates private & public key, optional to add passphrase, option are following with example below. Ideally, use Ed25519 as DSA `ssh-dss` and RSA not using SHA-2 are deprecated.
+
+- `-t` for cypher [dsa | ecdsa | ecdsa-sk | ed25519 | ed25519-sk | rsa]
+- `-b` to specify bits
+- `-f` output filename
+- `-C` key comment
+- `-N` passphrase
+- `-m` format
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
 
 Private: either no extension or `.ppk`
 
@@ -50,7 +62,7 @@ If you wanna find the fingerprint of particular key, use `ssh-keygen -lvf key/pa
 
 ### Putting public keys on other machine
 
-Public keys need to be added (appended on one new line) to .ssh/authorized_key or special place on particular website e.g. *Github/SSH&GPG keys*, easiest done with `ssh-copy-id [-i /key/location] user@host`. If you don't have `copy-id` module installed, you may use the following command for UNIX and Windows respectively:
+Public keys need to be added (appended on one new line) to .ssh/authorized_key or special place on particular website e.g. *Github/SSH&GPG keys*, easiest done with `ssh-copy-id -i /key/location] user@host`. If you don't have `copy-id` module installed, you may use the following command for UNIX and Windows respectively:
 
 ```bash
 `ssh-keygen && cat $envuserprofile/.ssh/id_rsa.pub | ssh user@linuxserver 'cat >> .ssh/authorized_keys'`
