@@ -49,7 +49,7 @@ Mysql: `root:kiriko123, wordpress@localhost:Kiriko-123`
    sudo apt update && sudo apt upgrade
    ```
 
-2. Installed apache, php along wordpress dependencian and mysql from Oracle
+2. Installed apache, php along wordpress dependencian and mysql from Oracle. We should see apache debian default page at our ip in browser.
 
    ```bash
     sudo apt install apache2 ghostscript php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip  php-imagick php-bcmath gnupg
@@ -65,7 +65,7 @@ Mysql: `root:kiriko123, wordpress@localhost:Kiriko-123`
     mysql> exit;
     ```
 
-3. Wordpress install:
+3. Wordpress install: make `/var/www` where all web files live, change owner to `www-date` user, download wordpress and *unzip* it into the folder. We make wordpress site config as per `[1]` and enable it along with some module, disable the default one. Now we should see wordpress welcome first start page and finish the config here. (fill out db name, db user)
 
    ```bash
     sudo mkdir -p /var/www
@@ -75,7 +75,7 @@ Mysql: `root:kiriko123, wordpress@localhost:Kiriko-123`
     sudo a2ensite wordpress && sudo a2enmod rewrite && sudo a2dissite 000-default && sudo systemctl reload apache2
     ```
 
-4. Installing firewall - why ufw instead of iptables? Because i didn't feel the adiitonal complexity and more granular options were worth it in our case.
+4. Installing firewall - why ufw instead of iptables? Because i didn't feel the adiitonal complexity and more granular options were worth it in our case. Commands below allows OpenSSH (22/tcp), web (80/tcp) and localhost to localhost for working proxy.
 
     ```bash
     sudo apt install ufw
@@ -85,7 +85,7 @@ Mysql: `root:kiriko123, wordpress@localhost:Kiriko-123`
     sudo ufw allow from 127.0.0.1 to 127.0.0.1 #allow localhost for proxy
     ```
 
-5. SSH keys - we can easily generate keys and move them to the server and use as specified below. If you want to disallow non-key ssh connection, we have to change `PasswordAuthentication yes` to `no` in `/etc/ssh/sshd_config`. You may use the same key as i used when setting up the VM below at `[3]`. However, **NEVER EVER SEND ANYONE PRIVATE KEY IN PLAINTEXT PUBLICLY OVER THE INTERNET**! This is only for the purpose of this task.
+5. SSH keys - we can easily generate keys and move them to the server and use as specified below (RSA is compatible with 99% however for future proofing, we should use instead ed25519). If we want to disallow non-key ssh connection, we have to change `PasswordAuthentication yes` to `no` in `/etc/ssh/sshd_config`. You may use the same key as i used when setting up the VM below at `[3]`. However, **NEVER EVER SEND ANYONE PRIVATE KEY IN PLAINTEXT PUBLICLY OVER THE INTERNET**! This is only for the purpose of this task.
 
    ```bash
     ssh-keygen -t rsa -b 4096 -C "nethost task" -f "nethost_RSA"
@@ -98,9 +98,9 @@ Mysql: `root:kiriko123, wordpress@localhost:Kiriko-123`
 
 ### Advanced
 
-1. `ls -1F | grep "/" | sed 's/.$//' > /etc.txt`
-2. `df -H | grep /dev/sd > space.txt && find / -type f -printf "%s\t%p\n" | sort -n | tail -1 >> space.txt`
-3. Haproxy - installed via commands shown below
+1. `ls -1F | grep "/" | sed 's/.$//' > /etc.txt` gets fles with classifiers, greps only folders, removes the classifier and redirects in into `/etc.txt`
+2. `df -H | grep /dev/sd > space.txt && find / -type f -printf "%s\t%p\n" | sort -n | tail -1 >> space.txt` gets info about current disk and pushes it into `/space.txt`; search recursively from root, only files, print to STDOU as "size \tab name", pipes it into sort by number ascending, pipes it into tail to get last item and appends it to the file.
+3. Haproxy - installed via commands shown below. Gets HProxy, changes apache and site to be on port 8000, binds the proxy on any IP port 80 and tells our server is at localhost (we could have multiple servers)
 
    ```bash
     sudo apt install haproxy
@@ -110,13 +110,13 @@ Mysql: `root:kiriko123, wordpress@localhost:Kiriko-123`
     sudo systemctl restart haproxy
    ```
 
-4. mod_php -> PHP-FPM
+4. mod_php -> PHP-FPM - uhhh turns off apache, install PHP-FPM, enables it, disables mod_php (old php install) and some prefork (i have no idea what those are whatsoever), enables the other better php, restarts the server, *Magically works*.
 
    ```bash
     sudo systemctl stop apache2.service && sudo systemctl disable apache2.service
     sudo apt install php-fpm
     sudo systemctl start php-fpm && sudo systemctl enable php-fpm
-    sudo a2dismod php7.3 mpm_prefork && Enabling module mpm_event && sudo a2enconf php7.3-fpm protect-user-inis
+    sudo a2dismod php7.4 mpm_prefork && a2enmod proxy_fcgi setenvif mpm_event && sudo a2enconf php7.4-fpm protect-user-inis
     sudo systemctl start apache2.service && sudo systemctl enable apache2.service
    ```
 
