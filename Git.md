@@ -67,6 +67,19 @@ git reset --hard HEAD^
 git push origin -f
 ```
 
+### Editing commit
+
+Use `--amend` and follwing to edit the latest commit:
+
+- `-m` to just change message
+- `--no-edit` to commit staged files without changing the message
+- `--no-edit --date "Mon 20 Aug 2018 20:19:19 BST"` to change commit timestamp
+- `--no-edit --author="Author Name <email@address.com>"` to change author/email
+
+if you wanna change history, use `git rebase <commit-hash>^ -i`, then change `pick` to `e` for commits you intend to change, do the change with commands above and `git rebase --continue` to move onto next commit
+
 ## Sos for the stuff
 
 [Official Git website](https://git-scm.com/book/en/v2/), [Github tutorial](https://docs.github.com/en/get-started/quickstart) and [GitHub cheat-sheet](https://training.github.com/downloads/github-git-cheat-sheet/)
+
+[Editing commits](https://www.atlassian.com/git/tutorials/rewriting-history)
