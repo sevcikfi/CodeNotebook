@@ -1,20 +1,99 @@
 # Basics stuff one looks up all the time
 
+## Moving around system
+
+`cd path/to/dir` to change directory, `cd ..` to move one dir up
+
+`pwd` to write out current absolute path e.g. `/home/user/.ssh`
+
+`ls` to write out the content of current dir (possible append with path `ls some/place`), popular options include:
+
+- `-a` for all, `-A` for all without `.` and `..`
+- `-l` for long format, `-g` just without author, `-G` without group
+- `-F` to append one of `*/=>@|)` to entries
+- `--color=always` to show colours
+- `-h` for man-readable, useful with `-l` and `-s`
+- `-s` print size in blocks
+- `-r` to reverse order
+- `-S` sort by size, descending
+- `-t` sort by time creation, descending
+- `-clt` sort by ctime (modification), descending
+- `-ut` sort by access time, descending
+- `-U` no sorting
+- `-X` sort by extensions
+- `-R` for recursive listing
+- `-n` is like `-l` but numbers instead of strings
+
+## Info and find stuff
+
+### uname
+
+to find software info about current OS `uname -a`
+
+### lsb_release
+
+to find info about current release `lsb_release -a`
+
+### neofetch
+
+Install neofetch for pretty print of basic HW and SW info `neofetch`
+
+### which
+
+`which command` to find the path to command
+
+### type
+
+`type command` to find what kind of command is, whether programme, executable or shell built-in
+
+### find
+
+Utilized by `find <starting-directory> <options> <search term>` and most basic being:
+
+```bash
+find . -name my-file
+```
+
+Other options are:
+
+- `-iname` for case-insensitivity
+- `-not` for negation
+- `-type` followed by `d`irectory, `f`ile, `l`ink, `c`haracter and `b`lock device
+- `-delete` to delete the found files
+- `-size <size> <unit>`, possible use `ckMG` for byte, kilo, mega, giga `10M`
+- `-user` by user
+- `-group` by group
+- `-perm` by perm (alternative `-empty` for empty files, `-exec` for executables and `-read`  for readable)
+
+### locate
+
+Alternative to `find` is `locate` which indexes your whole system and runs the command on the database. You may install it and run it via following:
+
+```bash
+sudo apt-get update
+sudo apt-get install mlocate
+sudo updatedb
+```
+
 ## File rights + ownership
+
+TODO: write a bit more about these
 
 `chmod`
 
 `chown -Rv user[:group] FILE`
 
+`chgrg`
+
 ## Multiple TTYs
 
 ### Screen
 
-`screen` and `CTRL+A D`
-
-`screen -r`
+For simple command persistence, use `screen`, then run your command and leave with `CTRL+A D`. To come back, use `screen -r`. If you have more screens running, it'll list all of them with last command and let you choose one of them.
 
 ### Tmux
+
+*it certainly exists*.
 
 ## Disks and Drives
 
@@ -54,10 +133,42 @@ LABEL=MY_BACKUP    /mount/point  ext4  defaults   1     2
 `mkdir -p /mnt/ram`
 `mount -t tmpfs tmpfs /mnt/ram -o size=8192M`
 
+## Firewalls
+
+TODO: write a bit more about how to use either of them
+
+All firewall manipulation will require **admin privileges**.
+
+### ufw
+
 ### IPTables
 
-[Source for basic IPTables work](https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands)
+Printing current rules is done via `iptables -L`, add `-v` for more verbosity; `iptables -S` for exact command wording
 
-For Oracle Cloud VM Firewall (INPUT on interface ens3, TCP/IP at port 80, state NEW, ESTABLISHED)
+To save the rules, use:
 
-`iptables -I INPUT 5 -i ens3 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT`
+```bash
+sudo apt install iptables-persistent
+sudo netfilter-persistent save
+```
+
+### Oracle Cloud
+
+If you're setting up service in Oracle Cloud, do not **forget** to allow particular ports and ips in secure list via webUI. However each Ubuntu and like other image with IPTables need to run following commands to make it work since the defaults make traffic into arbitrary REJECT jump. If you wanna do it ***right*** way, add the rules with `-I FLOW 5 <rest-of-rule>` (or any number before the jump rule specified bellow).
+
+```bash
+iptables -D INPUT -j REJECT --reject-with icmp-host-prohibited
+iptables -D FORWARD -j REJECT --reject-with icmp-host-prohibited
+```
+
+**FIXME:** wording
+To add traffic through, modify following; for Oracle Cloud VM Firewall (INPUT on interface ens3, TCP/IP at port 80, state NEW, ESTABLISHED)
+
+```bash
+iptables -A INPUT -i ens3 (NIC) -p tcp (protocol) --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+```
+
+## Source
+
+- [Source for basic IPTables work](https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands)
+- [IPtables guide](https://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/)
