@@ -1,8 +1,7 @@
 ---
 alias:
-tag: IT/DevOps CodeNotebook 
+tag: IT/DevOps IT/technologies CodeNotebook 
 ---
-
 
 # Docker
 
@@ -225,6 +224,66 @@ networks:
       config:
         - subnet: "172.16.238.0/24"
         - subnet: "2001:3984:3989::/64"
+```
+
+## Installation
+
+### Deb repo
+
+Cleaning old version
+
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt update
+```
+
+Dependencies
+
+```bash
+sudo apt-get install ca-certificates curl gnupg lsb-release
+```
+
+```bash
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+```bash
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+### Script (for Rasbian)
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+### Post-install setup
+
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+
+### Uninstallation  
+
+Uninstall the Docker Engine, CLI, containerd, and Docker Compose packages:
+
+```bash
+sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+```
+
+Images, containers, volumes, or custom configuration files on your host aren’t automatically removed. To delete all images, containers, and volumes:
+
+```bash
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
 ```
 
 ## Sources
