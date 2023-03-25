@@ -1,3 +1,8 @@
+---
+alias:
+tag: IT/linux CodeNotebook 
+---
+
 # HOW-TO packages in Linux
 
 **TODO**: read the links and write simple tutorial

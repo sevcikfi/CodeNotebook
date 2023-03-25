@@ -1,3 +1,8 @@
+---
+alias: "git gud"
+tag: IT/DevOps CodeNotebook 
+---
+
 # Git quick info
 
 ## Basic setup

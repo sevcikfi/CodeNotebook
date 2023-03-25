@@ -1,3 +1,8 @@
+---
+alias:
+tag: CodeNotebook 
+---
+
 # Misc/random stuff
 
 ## Netiquette aka RFC 1855

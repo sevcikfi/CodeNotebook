@@ -1,3 +1,8 @@
+---
+alias:
+tag: IT/DevOps IT/networking CodeNotebook 
+---
+
 # Networking
 
 ## Scanning network

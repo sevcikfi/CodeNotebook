@@ -1,3 +1,8 @@
+---
+alias:
+tag: CodeNotebook 
+---
+
 # ComSci
 
 file discussing ComSci paradigms and other advanced topics possible mentioned in lang specific mds in their respective folders

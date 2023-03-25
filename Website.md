@@ -1,3 +1,8 @@
+---
+alias:
+tag: misc CodeNotebook 
+---
+
 # Webs
 
 ## CLI tools

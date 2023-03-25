@@ -1,3 +1,8 @@
+---
+alias:
+tag: CodeNotebook 
+---
+
 # Basics stuff one looks up all the time
 
 ## Moving around system

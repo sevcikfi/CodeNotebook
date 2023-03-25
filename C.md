@@ -1,3 +1,8 @@
+---
+alias:
+tag: IT/languages CodeNotebook 
+---
+
 # C programming language notes
 
 WRITE: quick summary

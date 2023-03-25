@@ -1,3 +1,8 @@
+---
+alias:
+tag: CodeNotebook 
+---
+
 from [Jirka Mayer, prof. from MFF UK](https://github.com/Jirka-Mayer/NPRG030-062/blob/master/prg/zapoctaky.md)
 
 # Zápočťáky

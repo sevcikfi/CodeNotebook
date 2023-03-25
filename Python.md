@@ -1,3 +1,8 @@
+---
+alias:
+tag: IT/languages CodeNotebook 
+---
+
 # Python
 
 ## Install

@@ -1,3 +1,8 @@
+---
+alias:
+tag: CodeNotebook 
+---
+
 # Misc notes for C/C++ stuff
 
 likely more notes, tricks etc. might be in their respective mds or folders

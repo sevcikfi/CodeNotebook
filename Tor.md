@@ -1,3 +1,8 @@
+---
+alias:
+tag: IT/cybersecurity CodeNotebook 
+---
+
 # Tor
 
 ## Usage

@@ -13,7 +13,7 @@ Snippet of code and basic setup for Linux machine and various bits, tricks and o
 
 - [x] clean up various mds (SSH,Git and Basics done)
 - [ ] finish **TODO** in various files
-- [ ] convert some of the into full fledged Obsidian notes
+- [x] convert some of the into full fledged Obsidian notes
 - [ ] look up old ML course notes
 - [ ] finish reading */dev/null-cz* tutorial on C
 - [ ] as always *C0d€ m0ar!!!* 🥵
