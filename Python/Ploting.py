@@ -7,7 +7,7 @@ xs = [0.1 * i for i in range(100)]      # Hodnoty x od 0 do 10 s krokem 0.1
 ys1 = [math.sin(x) for x in xs]         # Funkce sin(x)
 
 plt.plot(xs, ys1)                       # Vykreslení grafu
-#plt.show()                              # Zobrazení grafu
+plt.show()                              # Zobrazení grafu
 
 
 """ Více grafů v jednom panelu """
