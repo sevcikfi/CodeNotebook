@@ -1,4 +1,4 @@
-# CDN77-DevOps task: VM
+# CDN77-DevOps task: Container cluster
 
 Summary::
 

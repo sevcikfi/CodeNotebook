@@ -13,7 +13,7 @@ line { stroke: rgb(0, 0, 0); stroke-width:2}
 ]]> 
 </style>";
     const string FOOTER = "</svg></body></html>";
-
+    
     public Logo(){}
     
     public void Execute(string[] args)
@@ -61,15 +61,18 @@ line { stroke: rgb(0, 0, 0); stroke-width:2}
                     Console.WriteLine("pendown");
                     break;
                 case "right": 
-                    Console.WriteLine("penup");
+                    Console.WriteLine("right");
                     break;
                 case "forward": 
-                    Console.WriteLine("penup");
+                    Console.WriteLine("forward");
                     break;
                 case "repeat":
                 
                 case " ":
-                    
+                    line.Trim();
+                    repeat.Add(line);
+                    break;
+
                 case "]":
                     for (int i = 0; i < repeatNum; i++)
                     {
@@ -80,7 +83,7 @@ line { stroke: rgb(0, 0, 0); stroke-width:2}
                 default: 
                     Console.WriteLine("rip");
                     throw new ParseException("Parse error");
-                    break;
+                    //break;
             }
         }
     }

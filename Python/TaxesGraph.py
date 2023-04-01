@@ -7,6 +7,8 @@ sources:
     https://www.finance.cz/544083-pausalni-dan-2023/
     https://www.itnetwork.cz/prace-a-podnikani-v-it/podnikani/jak-zacit-podnikat
     https://spolehlivaucetni.cz/blog/pausalni-vydaje
+
+    matplotlib colours: https://matplotlib.org/stable/tutorials/colors/colors.html
 """
 
 import numpy as np
