@@ -75,11 +75,58 @@ Most basic logging can be done with native *logging* module:
 ```Python
 import logging
 level = logging.DEBUG #lowest logging level
-format = '[%(level_name)s] %(asctime)s - %(message)s' #message format
-logging.debug("debug message") #debug/info/error
-logging.basicConfig(level=level, format=format)
+format = '[%(level_name)s] - %(asctime)s - %(message)s' #message format
+logging.debug("debug message")
+logging.basicConfig(level=level, format=format, filename=filename) 
 #prints [DEBUG] 2022-08-23 2:15:22 - debug message
 ```
+
+#### Config
+
+By default, the logger is root, you may change it with `getLogger("name")`
+
+- levels: debug, info, warning, error, critical, *exception* for stack trace, the methods have corresponding names
+- filename: name of filename
+- format: see: [official docs](https://docs.python.org/3/library/logging.html#logrecord-attributes)
+- filemode: set to `w` to clear the file for each program run
+
+### Testing - pytest
+
+Quickiest example:
+
+```python
+import pytest
+def inc(x):
+    return x + 1
+def test_answer():
+    assert inc(3) == 5
+def f():
+    raise SystemExit(1)
+def test_mytest():
+    with pytest.raises(SystemExit):
+        f()
+```
+
+You may want to group tests into classes. They're automatically discoverd by prefixing functions with `test_` and classes with `Test`. To execute test, run `pytest` in console, use `-q` for brief output.
+
+Note: *pytest will run all files of the form test_*.py or *_test.py in the current directory and its subdirectories*
+
+### Testing - unittest
+
+```python
+import unittest
+import whatever
+
+class test_whatever(unittest.TestCase)
+    def test_f(self):
+        self.assertEqual(f(1), 1)
+if __name__ == "__main__":
+    unittest.main()
+```
+
+`setUp()` and `tearDown()` are run before and after respective test method, `setUp()` and `tearDownClass()` with all methods as `@classmethod` to setup test classes. Commond assert methods are: (Not)Equal, True, False, Is(Not), (Not)None, (Not)In, (Not)IsInstance. AlmostEqual (with precision on 7 decimal places), GreaterEqual and Less or some combination. For more info, see official docs [here](https://docs.python.org/3/library/unittest.html#unittest.TestCase.debug)
+
+### curses
 
 ## Advanced
 
