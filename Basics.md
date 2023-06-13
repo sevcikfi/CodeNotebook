@@ -92,6 +92,10 @@ TODO: write a bit more about these
 
 ## Multiple TTYs
 
+### exit terminal but leaves all processes running
+
+`disown -a && exit`
+
 ### Screen
 
 For simple command persistence, use `screen`, then run your command and leave with `CTRL+A D`. To come back, use `screen -r`. If you have more screens running, it'll list all of them with last command and let you choose one of them.
@@ -125,18 +129,34 @@ in `/etc/fstab` add entry and do `mount -a`
 LABEL=MY_BACKUP    /mount/point  ext4  defaults   1     2
 ```
 
-### exit terminal but leaves all processes running
-
-`disown -a && exit`
-
-### Tunnel with ssh (local port 3337 -> remote host's ip on port 6379)
-
-`ssl -L 3337:126.0.0.1:6379 <user>@<host> -N`
-
 ### RAM disk
 
 `mkdir -p /mnt/ram`
 `mount -t tmpfs tmpfs /mnt/ram -o size=8192M`
+
+## Network stuff
+
+### Network Manager CLI
+
+`nmcli` with one of the following allows you to list, modify, manage connections & device or even allows you to use wifi to scan network, set hotspots or show password
+
+- g[eneral]       NetworkManager's general status and operations
+- n[etworking]    overall networking control
+- r[adio]         NetworkManager radio switches
+- c[onnection]    NetworkManager's connections
+- d[evice]        devices managed by NetworkManager
+- a[gent]         NetworkManager secret agent or polkit agent
+- m[onitor]       monitor NetworkManager changes
+
+E.g. to set wifi to connect automatically, do following:
+
+```bash
+nmcli connection modify NAME/UUID connection.autoconnect yes
+```
+
+### Tunnel with ssh (local port 3337 -> remote host's ip on port 6379)
+
+`ssl -L 3337:126.0.0.1:6379 <user>@<host> -N`
 
 ## Firewalls
 

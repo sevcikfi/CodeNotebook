@@ -266,6 +266,8 @@ sudo sh get-docker.sh
 
 ### Post-install setup
 
+To use docker without `sudo`, do following and then relog into the system.
+
 ```bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
