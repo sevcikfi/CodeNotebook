@@ -295,5 +295,6 @@ sudo rm -rf /var/lib/containerd
 3. [Compose docs](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes)
 4. [Networking](https://docs.docker.com/compose/networking/)
 5. [Docker build](https://docs.docker.com/engine/reference/commandline/compose_build/)
-6. [text](https://docs.docker.com/engine/reference/commandline/compose_up/)
-7. [YT](https://www.youtube.com/watch?v=pTFZFxd4hOI)
+6. [Compose](https://docs.docker.com/engine/reference/commandline/compose_up/)
+7. [Moving docker data](https://www.digitalocean.com/community/questions/how-to-move-the-default-var-lib-docker-to-another-directory-for-docker-on-linux)
+8. [YT](https://www.youtube.com/watch?v=pTFZFxd4hOI)

@@ -129,3 +129,4 @@ Thumbs.db    # Having images in the source tree generates those files in Explore
 Icon?
 ehthumbs.db
 Thumbs.db
+*.db
