@@ -194,15 +194,30 @@ Connect over network: `mariadb -h [host_address] -P [port_number]`
 - truncate table, in other words, deletes all the content: `TRUNCATE table_name;`
 - List all users on the database instance: `SELECT user,host FROM mysql.user;`
 - Create a new user with a given password: `CREATE USER user[@'host'] IDENTIFIED BY 'plain-textpassword';`
-- Grant all privileges on a given database to a particular
-user: `GRANT ALL ON db_name.* TO user[@'host']`
+- remove user with `DROP USER 'user'@'host';`
+
+Syntax to grant or revoke privileges on a given database to a particular
+user: `GRANT|REVOKE permission ON database.table TO 'user'@'localhost';` For host  ``` `` ``` and `%` is any host/IP, `localhost` is only from the host machine. Always make root `localhost` exclusive for improved security.
+
+- `ALL` - Allows complete access to a specific database. If a database is not specified, it allows complete access to the entirety of MySQL.
+- `CREATE` - Allow a user to create databases and tables.
+- `DELETE` - Allow a user to delete rows from a table.
+- `DROP` - Allow a user to drop databases and tables.
+- `EXECUTE` - Allow a user to execute stored routines.
+- `GRANT OPTION` - Allow a user to grant or remove another user's privileges.
+- `INSERT` - Allow a user to insert rows from a table.
+- `SELECT` - Allow a user to select data from a database.
+- `SHOW DATABASES`- Allow a user to view a list of all databases.
+- `UPDATE` - Allow a user to update rows in a table.
+
+Remember to always refresh the privileges with `FLUSH PRIVILEGES;`
 
 #### Secure installation
 
 What happens in the script is basically setting the database root password and removing a test database and users.
 
 ```bash
-readonly mariadb_root_password=fogMeHud8
+readonly mariadb_root_password=root_secret
 
 if mysqladmin -u root status > /dev/null 2>&1; then
   mysqladmin password "${mariadb_root_password}" > /dev/null 2>&1
