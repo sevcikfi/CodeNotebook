@@ -455,3 +455,4 @@ RUN dotnet build -c release --no-restore
 6. [Compose](https://docs.docker.com/engine/reference/commandline/compose_up/)
 7. [Moving docker data](https://www.digitalocean.com/community/questions/how-to-move-the-default-var-lib-docker-to-another-directory-for-docker-on-linux)
 8. [YT](https://www.youtube.com/watch?v=pTFZFxd4hOI)
+9. [Digital Ocean tutorial on laravel-nginx-sql in docker](https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose-on-ubuntu-20-04)

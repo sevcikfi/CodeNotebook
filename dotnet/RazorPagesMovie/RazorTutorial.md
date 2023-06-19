@@ -375,6 +375,37 @@ We added the previous code which does the following:
 - `Genres`: Contains the list of genres. `Genres` allows the user to select a genre from the list. `SelectList` requires `using Microsoft.AspNetCore.Mvc.Rendering`;
 - `MovieGenre`: Contains the specific genre the user selects. For example, "Western".
 
+and changed `OnGetAsync()` accordingly:
+
+```csharp
+public async Task OnGetAsync()
+{
+    var movies = from m in _context.Movie
+                 select m;
+    if (!string.IsNullOrEmpty(SearchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(SearchString));
+    }
+
+    Movie = await movies.ToListAsync();
+}
+```
+
+- The first line of the `OnGetAsync` method creates a *LINQ query* to select the movies. The query is only ***defined*** at this point, it has ***not*** been run against the database.
+- If the `SearchString` property is not `null` or empty, the movies query is modified to filter on the search string.
+
+The `s => s.Title.Contains()` code is a *Lambda Expression*. Lambdas are used in method-based LINQ queries as arguments to standard query operator methods such as the *`Where`* method or `Contains`. *LINQ* queries are not executed when they're defined or when they're modified by calling a method, such as `Where`, `Contains`, or `OrderBy`. Rather, query execution is deferred. The evaluation of an expression is *delayed* until its realized value is iterated over or the `ToListAsync` method is called.
+
+Navigate to the Movies page and append a query string such as ?searchString=Ghost to the URL. For example, `https://localhost:5001/Movies?searchString=Ghost`. The filtered movies are displayed.
+
+However if you want to pass the parameter as `URL segment` instead of `Query parameter`, you need to add the following route template to the Index page, the search string can be passed as a URL segment. For example, `https://localhost:5001/Movies/Ghost`. The `?` in `"{searchString?}"` means this is an optional route parameter.
+
+```csharp
+@page "{searchString?}"
+```
+
+The *ASP.NET Core* runtime uses **model binding** to set the value of the `SearchString` property from the query string (`?searchString=Ghost`) or route data (`https://localhost:5001/Movies/Ghost`). Model binding is **not** case sensitive.
+
 ## Sources
 
 - [MS docs](https://learn.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-7.0&tabs=visual-studio-code)
