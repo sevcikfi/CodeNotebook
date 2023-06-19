@@ -98,6 +98,14 @@ Summary::*le container hellscape*
 
 Note: command from (docker-)compose.yml **overrides** *CMD*, similar to after image name on cli
 
+### EXPOSE port
+
+`EXPOSE 3306` - expose ports without publishing them to the host machine - they’ll only be accessible to linked services. Only the internal port can be specified or in compose as following:
+
+```yaml
+expose: 3306
+```
+
 ---
 
 ## docker-compose.yml
@@ -167,6 +175,40 @@ services:
     image: postgres
     ports:
       - "8001:5432"
+```
+
+### Environment variable and reusing settings
+
+```yaml
+version: '3.7'
+services:
+ redis: &service_default
+   image: redis:4.0.9-alpine
+   init: true
+   restart: always
+   container_name: redis
+   extra_hosts:
+     - 'redis:172.20.0.2'
+     - 'nginx:172.20.0.3'
+   networks:
+     dockernet:
+      ipv4_address: 172.20.0.2
+nginx:
+   <<: *service_default
+   image: nginx:1.14-alpine
+   container_name: nginx
+   networks:
+     dockernet:
+      ipv4_address: 172.20.0.3
+   ports:
+     - 80:80
+     - 443:443
+networks:
+ dockernet:
+  driver: bridge
+  ipam:
+   config:
+   - subnet: 172.20.0.0/16
 ```
 
 #### Aliases
@@ -287,6 +329,121 @@ Images, containers, volumes, or custom configuration files on your host aren’t
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
+
+## Caveats for use-cases
+
+maybe move to language/technology specific doc.
+
+### Dotnet and `.csproj` clusterfuck
+
+Basic app build:
+
+```Dockerfile
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS publish
+WORKDIR /src
+COPY . .
+RUN dotnet publish -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "WebApi.dll"]
+```
+
+Caching dependencies (might've gotten improved so that only `dotnet restore` is enough?)
+
+```Dockerfile
+# https://hub.docker.com/_/microsoft-dotnet
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /source
+
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY aspnetapp/*.csproj ./aspnetapp/
+RUN dotnet restore
+
+# copy everything else and build app
+COPY aspnetapp/. ./aspnetapp/
+WORKDIR /source/aspnetapp
+RUN dotnet publish -c release -o /app --no-restore
+
+# final stage/image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /app
+COPY --from=build /app ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+```
+
+Complex app issue:
+
+```Dockerfile
+# https://hub.docker.com/_/microsoft-dotnet
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /source
+
+# copy csproj and restore as distinct layers
+COPY complexapp/*.csproj complexapp/
+COPY libfoo/*.csproj libfoo/
+COPY libbar/*.csproj libbar/
+RUN dotnet restore complexapp/complexapp.csproj
+
+# copy and build app and libraries
+COPY complexapp/ complexapp/
+COPY libfoo/ libfoo/
+COPY libbar/ libbar/
+WORKDIR /source/complexapp
+RUN dotnet build -c release --no-restore
+
+# test stage -- exposes optional entrypoint
+# target entrypoint with: docker build --target test
+FROM build AS test
+WORKDIR /source/tests
+
+COPY tests/*.csproj .
+RUN dotnet restore tests.csproj
+
+COPY tests/ .
+RUN dotnet build --no-restore
+
+ENTRYPOINT ["dotnet", "test", "--logger:trx", "--no-restore", "--no-build"]
+
+FROM build AS publish
+RUN dotnet publish -c release --no-build -o /app
+
+# final stage/image
+FROM mcr.microsoft.com/dotnet/runtime:6.0
+WORKDIR /app
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "complexapp.dll"]
+```
+
+someone's handy tool, `dotnet subset`, which simplified the workflow
+
+```Dockerfile
+# https://hub.docker.com/_/microsoft-dotnet
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS prepare-restore-files
+ENV PATH="${PATH}:/root/.dotnet/tools"
+RUN dotnet tool install --global --no-cache dotnet-subset --version 0.3.2
+WORKDIR /source
+COPY . .
+RUN dotnet subset restore complexapp/complexapp.csproj --root-directory /source --output restore_subset/
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /source
+COPY --from=prepare-restore-files /source/restore_subset .
+RUN dotnet restore complexapp/complexapp.csproj
+
+# copy and build app and libraries
+COPY complexapp/ complexapp/
+COPY libfoo/ libfoo/
+COPY libbar/ libbar/
+WORKDIR /source/complexapp
+RUN dotnet build -c release --no-restore
+
+...
+```
+
+[Sos](https://blog.nimbleways.com/docker-build-caching-for-dotnet-applications-done-right-with-dotnet-subset/)
 
 ## Sources
 

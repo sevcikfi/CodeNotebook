@@ -68,10 +68,10 @@ docker image list
 docker run -it imageName-or-ID
 ```
 
-Start the server for the first time using `bash startserver.sh`, wait for it load and add yourself to whitelist with `whitelist add your_nick`, you may want to add yourself to ops via `ops your_nick`. Now you can stop the server and 1) change the configs or server.properties as like and 2) download FTB-Utils and/or other stuff as described above i.e. `cd` mods folder and `wget` it. Once you're done, you can exit the container and start the way you always will from this folder via:
+Start the server for the first time using `bash startserver.sh`, wait for it load and add yourself to whitelist with `whitelist add your_nick`, you may want to add yourself to ops via `ops your_nick`. Now you can stop the server and 1) change the configs or `server.properties` as like and 2) download FTB-Utils and/or other stuff as described above i.e. `cd` mods folder and `wget` it. Once you're done, you can exit the container and start the way you always will from this folder via:
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 Or alternatively from anywhere in the system with the following. Note that you'll need to know id or name of the container.

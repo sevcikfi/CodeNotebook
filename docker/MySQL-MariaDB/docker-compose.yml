@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+version: '3.9'
+
+services:
+
+  db:
+    image: mariadb
+    container_name: some-mariadb
+    restart: always
+    env_file: .env
+    #environment:
+    #  MARIADB_ROOT_PASSWORD: example
+    ports: "3360:3306"
+    #--volume=/root/docker/[container_name]/conf.d:/etc/mysql/conf.d 
+    #--volume=/storage/docker/mysql-data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+# docker run --detach -P --name some-mariadb
+#--env MARIADB_USER=example-user
+#--env MARIADB_PASSWORD=my_cool_secret
+#--env MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:latest
