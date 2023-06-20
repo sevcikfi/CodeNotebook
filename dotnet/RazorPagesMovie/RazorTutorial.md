@@ -20,7 +20,7 @@ appsettings.json:
 
 Contains configuration data, like connection strings.
 
-```dotnet
+```csharp
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -45,7 +45,7 @@ The model classes are known as POCO classes (from "Plain-Old CLR Objects") becau
 
 ### Add data model
 
-```dotnet
+```csharp
 using System.ComponentModel.DataAnnotations;
 
 namespace RazorPagesMovie.Models;
@@ -99,7 +99,7 @@ Razor Pages are derived from `PageModel`. By convention, the `PageModel` derived
 
 The constructor uses [[dependency injection]] to add the `RazorPagesMovieContext` to the page. The injection gets added by the builder service in `Program.cs`.
 
-```dotnet
+```csharp
 public class IndexModel : PageModel
 {
     private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
@@ -108,6 +108,7 @@ public class IndexModel : PageModel
     {
         _context = context;
     }
+}
 ```
 
 ### GET
@@ -116,7 +117,7 @@ When a `GET` request is made for the page, the `OnGetAsync` method returns a lis
 
 When the return type is `IActionResult` or `Task<IActionResult>`, a return statement must be provided. For example:
 
-```dotnet
+```csharp
 public async Task<IActionResult> OnPostAsync()
 {
   if (!ModelState.IsValid)
@@ -141,7 +142,7 @@ The `@page` Razor directive makes the file an MVC action, which means that it ca
 
 ### The @model directive
 
-```asp
+```csharp
 @page
 @model RazorPagesMovie.Pages.Movies.IndexModel
 ```
@@ -150,7 +151,7 @@ The `@model` directive specifies the type of the model passed to the Razor Page.
 
 Examine the lambda expression used in the following HTML Helper:
 
-```dotnet
+```csharp
 @Html.DisplayNameFor(model => model.Movie[0].Title)
 ```
 
@@ -165,7 +166,7 @@ Select the menu links RazorPagesMovie, Home, and Privacy. Each page shows the sa
 
 Find the `@RenderBody()` line. `RenderBody` is a placeholder where all the page-specific views show up, wrapped in the layout page. For example, select the Privacy link and the `Pages/Privacy.cshtml` view is rendered inside the `RenderBody` method.
 
-```Csharp
+```csharp
 @{
     Layout = "_Layout";
 }
@@ -405,6 +406,54 @@ However if you want to pass the parameter as `URL segment` instead of `Query par
 ```
 
 The *ASP.NET Core* runtime uses **model binding** to set the value of the `SearchString` property from the query string (`?searchString=Ghost`) or route data (`https://localhost:5001/Movies/Ghost`). Model binding is **not** case sensitive.
+
+---
+
+## Add a new field to a Razor Page
+
+1. Open the `Models/Movie.cs` file and add a `Rating` property
+2. Edit `Pages/Movies/Index.cshtml`, and add a `Rating` field
+3. Update the following pages with a `Rating` field: `Create`, `Delete`, `Details` and `Edit`
+
+The app won't work until the database is updated to include the new field. Running the app without an update to the database throws a `SqlException`: `SqlException: Invalid column name 'Rating'.`
+
+The `SqlException` exception is caused by the updated Movie model class being different than the schema of the Movie table of the database. There's no `Rating` column in the database table.
+
+There are a few approaches to resolving the error:
+
+1. Have the Entity Framework automatically drop and re-create the database using the new model class schema. **Causes data loss!** use only in development.
+2. Explicitly modify the schema of the existing database so that it matches the model classes. The advantage of this approach is to keep the data. Make this change either manually or by creating a database change script.
+3. Use *Code First Migrations* to update the database schema.
+
+## Add a migration for rating
+
+```bash
+dotnet ef migrations add rating
+dotnet ef database update
+```
+
+The `dotnet-ef migrations add rating` command tells the framework to:
+
+- Compare the `Movie` *model* with the `Movie` *database* schema.
+- Create code to migrate the database schema to the new model.
+
+The `dotnet-ef database update` command tells the framework to apply the schema changes to the database and to preserve existing data.
+
+Note: migrations can only do the kinds of changes that the EF Core provider supports, and some provider's capabilities are limited. For example, adding a column may be supported, but removing or changing a column is not. You will either have to **manually** update the database or delete the migration folder and database and regenerate it again.
+
+```bash
+dotnet ef database drop
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
+
+---
+
+## Validation
+
+
+
+---
 
 ## Sources
 
