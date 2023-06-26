@@ -452,7 +452,6 @@ dotnet ef database update
 ## Validation
 
 
-
 ---
 
 ## Sources
