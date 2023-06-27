@@ -451,6 +451,37 @@ dotnet ef database update
 
 ## Validation
 
+A key tenet of software development is called [[DRY]] ("**D**on't **R**epeat **Y**ourself"). Razor Pages encourages development where functionality is specified once, and it's reflected throughout the app. DRY can help:
+
+- Reduce the amount of code in an app.
+- Make the code less error prone, and easier to test and maintain.
+
+The validation support provided by Razor Pages and Entity Framework is a good example of the DRY principle:
+
+- Validation rules are declaratively specified in one place, in the model class.
+- Rules are enforced everywhere in the app.
+
+### Validation rules for model
+
+The `System.ComponentModel.DataAnnotations` namespace provides:
+
+- A set of built-in validation attributes that are applied declaratively to a class or property.
+- Formatting attributes like `[DataType]` that help with formatting and don't provide any validation.
+
+Update the `Movie` class to take advantage of the built-in `[Required]`, `[StringLength]`, `[RegularExpression]`, and `[Range]` validation attributes.
+
+Notice how the form has automatically rendered a validation error message in each field containing an invalid value. The errors are enforced both *client-side*, using *JavaScript* and *jQuery*, and *server-side*, when a user has JavaScript **disabled**. The form data isn't posted to the server until there are no client-side validation errors.
+
+### DataType Attributes
+
+The System.ComponentModel.DataAnnotations namespace provides formatting attributes in addition to the built-in set of validation attributes. The `[DataType]` attribute is applied to the `ReleaseDate` and `Price` properties. The `[DataType]` attributes provide:
+
+- Hints for the view engine to format the data.
+- Supplies attributes such as `<a>` for URL's and `<a href="mailto:EmailAddress.com">` for email.
+
+Use the `[RegularExpression]` attribute to validate the format of the data. The `[DataType]` attribute is used to specify a data type that's more specific than the database intrinsic type. `[DataType]` attributes aren't validation attributes. In the example, only the date is displayed, without time.
+
+The `DataType` enumeration provides many data types, such as `Date`, `Time`, `PhoneNumber`, `Currency`, `EmailAddress`, `CreditCard`, `PostalCode` and more.
 
 ---
 
