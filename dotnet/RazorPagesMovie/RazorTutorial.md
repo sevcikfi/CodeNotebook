@@ -485,6 +485,14 @@ The `DataType` enumeration provides many data types, such as `Date`, `Time`, `Ph
 
 ---
 
+## Unit testing and others
+
+read up here:
+
+- [unit test](https://learn.microsoft.com/en-us/aspnet/core/test/razor-pages-tests?view=aspnetcore-7.0)
+- [stress tests](https://learn.microsoft.com/en-us/aspnet/core/test/load-tests?view=aspnetcore-7.0)
+- [integration test](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-7.0)
+
 ## Sources
 
 - [MS docs](https://learn.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-7.0&tabs=visual-studio-code)

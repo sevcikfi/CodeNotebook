@@ -5,20 +5,20 @@ tag: IT CodeNotebook MOC
 
 # Code Notebook
 
+**grug bad memory, need stuff write down** xc
+
 Snippet of code and basic setup for Linux machine and various bits, tricks and other useful info, gathered and documented over the years of dealing with spaghetti of Computer-related fields.
 
-## Meta
+## Meta (=reminders)
 
 ### TODO
 
-- [x] clean up various mds (SSH,Git and Basics done)
-- [ ] finish **TODO** in various files
-- [x] convert some of the into full fledged Obsidian notes
-- [ ] look up old ML course notes
-- [ ] finish reading */dev/null-cz* tutorial on C
-- [ ] as always *C0d€ m0ar!!!* 🥵
+- [x] finish **TODO** in various files
+- [ ] look up old ML course notes (note: did but not rewritten yet)
+- [x] as always *C0d€ m0ar!!!* 🥵 (always in progress)
+- [ ] finish reading */dev/null-cz* tutorial on C (ETA summer)
 
 ### TO-REMOVE
 
-- [x] bash/dotfile -> new repo (done in June 2022)
-- [x] bash/ should be used only for bash scripts
+- [x] clean up various mds (SSH,Git and Basics done Winter 2023)
+- [x] convert some of the into full fledged Obsidian notes (done spring 2023)
