@@ -20,12 +20,12 @@ public class Movie
     [Column(TypeName = "decimal(18, 2)")]
     public decimal Price { get; set; }
 
-    [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+    [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
     [Required]
     [StringLength(30)]
     public string Genre { get; set; } = string.Empty;
 
-    [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+    [RegularExpression(@"^[A-Z0-9]+[a-zA-Z0-9""'\s-]*$")]
     [StringLength(5)]
     [Required]
     public string Rating { get; set; } = string.Empty;
