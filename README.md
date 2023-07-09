@@ -11,6 +11,8 @@ Snippet of code and basic setup for Linux machine and various bits, tricks and o
 
 ## Meta (=reminders)
 
+- [ ] do the thing you say you would
+
 ### TODO
 
 - [x] finish **TODO** in various files
