@@ -19,6 +19,7 @@ Snippet of code and basic setup for Linux machine and various bits, tricks and o
 - [ ] look up old ML course notes (note: did but not rewritten yet)
 - [x] as always *C0d€ m0ar!!!* 🥵 (always in progress)
 - [ ] finish reading */dev/null-cz* tutorial on C (ETA summer)
+- [ ] look up stuff on Rust lang
 
 ### TO-REMOVE
 

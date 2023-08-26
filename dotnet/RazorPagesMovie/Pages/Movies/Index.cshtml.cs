@@ -22,7 +22,7 @@ namespace RazorPagesMovie.Pages_Movies
 
         public IList<Movie> Movie { get;set; } = default!;
 
-         [BindProperty(SupportsGet = true)]
+        [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
 
         public SelectList? Genres { get; set; }
