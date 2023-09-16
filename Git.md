@@ -1,6 +1,6 @@
 ---
 alias: "git gud"
-tag: IT/DevOps CodeNotebook 
+tag: IT/DevOps CodeNotebook
 ---
 
 # Git quick info

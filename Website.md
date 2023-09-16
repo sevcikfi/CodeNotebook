@@ -1,6 +1,6 @@
 ---
 alias:
-tag: misc CodeNotebook 
+tag: misc CodeNotebook
 ---
 
 # Webs

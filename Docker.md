@@ -1,6 +1,6 @@
 ---
 alias:
-tag: IT/DevOps IT/technologies CodeNotebook 
+tag: IT/DevOps IT/technologies CodeNotebook
 ---
 
 # Docker

@@ -1,6 +1,6 @@
 ---
 alias:
-tag: IT/DevOps IT/technologies IT/cybersecurity CodeNotebook 
+tag: IT/DevOps IT/technologies IT/cybersecurity CodeNotebook
 ---
 
 # SSH stuff

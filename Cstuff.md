@@ -1,6 +1,6 @@
 ---
 alias:
-tag: CodeNotebook 
+tag: CodeNotebook
 ---
 
 # Misc notes for C/C++ stuff

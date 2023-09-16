@@ -1,6 +1,6 @@
 ---
 alias:
-tag: IT/linux CodeNotebook 
+tag: IT/linux CodeNotebook
 ---
 
 # HOW-TO packages in Linux

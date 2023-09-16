@@ -1,6 +1,6 @@
 ---
 alias:
-tag: IT/DevOps IT/networking CodeNotebook 
+tag: IT/DevOps IT/networking CodeNotebook
 ---
 
 # Networking

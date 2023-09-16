@@ -1,6 +1,6 @@
 ---
 alias:
-tag: IT/cybersecurity CodeNotebook 
+tag: IT/cybersecurity CodeNotebook
 ---
 
 # Tor

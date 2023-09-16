@@ -1,6 +1,6 @@
 ---
 alias:
-tag: CodeNotebook 
+tag: CodeNotebook
 ---
 
 # Basics stuff one looks up all the time
