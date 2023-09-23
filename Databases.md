@@ -9,12 +9,16 @@ tag: IT/languages CodeNotebook
 
 *quick info* about different types and what's popular right know and their pros and cons
 
+Relational-SQL DB:
+
 - MySQL
 - MariaDB
 - Microsoft-SQL
 - PostgreSQL
 - SQLite
 - Oracle SQL
+
+No-SQL or special:
 
 - MongoDB
 - GraphQL
@@ -30,7 +34,7 @@ Connect to local server: `mysql -u [username] -p [database]`
 
 Connect over network: `mariadb -h [host_address] -P [port_number]`
 
-### CREATE / ALTER / DROP / REMOVE
+#### CREATE / ALTER / DROP / REMOVE
 
 - create DB: `CREATE DATABASE database_name;`
 - Drop DB: `DROP DATABASE [IF EXISTS] database_name;`
@@ -60,7 +64,7 @@ Connect over network: `mariadb -h [host_address] -P [port_number]`
 
 - drop table: `DROP TABLE [IF EXISTS] table_name;`
 
-### Constraints
+#### Constraints
 
 - `NOT NULL` - Ensures that a column cannot have a NULL value
 - `UNIQUE` - Ensures that all values in a column are different
@@ -83,7 +87,7 @@ Connect over network: `mariadb -h [host_address] -P [port_number]`
 
 - `AUTO_INCREMENT` - Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table
 
-### Browsing
+#### Browsing
 
 - change current DB: `USE database_name;`
 - show DBs: `SHOW DATABASES;`
@@ -92,7 +96,7 @@ Connect over network: `mariadb -h [host_address] -P [port_number]`
 - show create table statement: `SHOW CREATE TABLE table_name;`
 - Show the field information for a specified table: `SHOW FIELDS FROM table_name / DESCRIBE table_name;`
 
-### Select basic
+#### Select basic
 
 - Select all rows from a table: `SELECT * FROM table_name;`
 - Select data from columns: `SELECT column1, column2 FROM table_name`
@@ -148,7 +152,7 @@ Connect over network: `mariadb -h [host_address] -P [port_number]`
     HAVING function(other_column) <some_condition>;
     ```
 
-### INSERT / UPDATE / DELETE
+#### INSERT / UPDATE / DELETE
 
 - Insert a row into a table:
 
@@ -217,7 +221,7 @@ user: `GRANT|REVOKE permission ON database.table TO 'user'@'localhost';` For hos
 
 Remember to always refresh the privileges with `FLUSH PRIVILEGES;`
 
-#### Secure installation
+### Secure installation
 
 What happens in the script is basically setting the database root password and removing a test database and users.
 
@@ -259,6 +263,10 @@ GRANT ALL ON ${db_name}.* TO '${db_user}'@'%' IDENTIFIED BY PASSWORD('${db_passw
 FLUSH PRIVILEGES;
 _EOF_
 ```
+
+### Others something
+
+TODO: put more info about other type and their use case here
 
 ## Sources
 
