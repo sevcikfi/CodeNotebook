@@ -12,6 +12,7 @@ Snippet of code and basic setup for Linux machine and various bits, tricks and o
 ## Meta (=reminders)
 
 - [ ] do the thing you say you would
+- [ ] maybe perhaps own/local Grafana to monitor your homelab/infra? (ideal to also learn it for work)
 
 ### TODO
 
