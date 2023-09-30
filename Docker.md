@@ -7,6 +7,17 @@ tag: IT/DevOps IT/technologies CodeNotebook
 
 Summary::*le container hellscape*
 
+## Best practice
+
+1. Use verified Docker Images as Base Image, *don't reinvent the wheel*
+2. Use Specific Docker Image Versions so that your apps don't randomly break
+3. Use Small-Sized Official Images
+4. Optimize Caching Image Layers
+5. Use `.dockerignore` file for smaller size
+6. Make use of Multi-Stage Builds to get rid of temp/dev files
+7. Use the Least Privileged User
+8. Scan your Images for Security Vulnerabilities
+
 ## Building image
 
 `docker build -t myApp /path/to/dockerfile` or `docker-compose build`
@@ -107,6 +118,20 @@ expose: 3306
 ```
 
 ---
+
+### Securing container with generic user
+
+In case of breaking the sandbox, it's best not to use root user inside. Most default base OS images already do this.
+
+```docker
+# create group and user
+RUN groupadd -r someUser && useradd -g someUser someUser
+# set ownership and permissions
+RUN chow -R someUser:someUser /some/folder
+#switch to user
+USER someUser
+...
+```
 
 ## docker-compose.yml
 
@@ -443,8 +468,6 @@ RUN dotnet build -c release --no-restore
 ...
 ```
 
-[Sos](https://blog.nimbleways.com/docker-build-caching-for-dotnet-applications-done-right-with-dotnet-subset/)
-
 ## Sources
 
 1. [Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
@@ -456,3 +479,4 @@ RUN dotnet build -c release --no-restore
 7. [Moving docker data](https://www.digitalocean.com/community/questions/how-to-move-the-default-var-lib-docker-to-another-directory-for-docker-on-linux)
 8. [YT](https://www.youtube.com/watch?v=pTFZFxd4hOI)
 9. [Digital Ocean tutorial on laravel-nginx-sql in docker](https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose-on-ubuntu-20-04)
+10. [Dotnet app caching](https://blog.nimbleways.com/docker-build-caching-for-dotnet-applications-done-right-with-dotnet-subset/)
