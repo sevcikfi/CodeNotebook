@@ -104,6 +104,56 @@ For simple command persistence, use `screen`, then run your command and leave wi
 
 *it certainly exists*.
 
+## systemd
+
+### Basic command
+
+For system state:
+
+- `systemctl status` show current status
+- `systemctl --failed` show failed units
+
+Checking *unit* status:
+
+- `systemctl status unit` includes whether it's running
+- `systemctl is-enabled unit`
+
+Management, all requires root/sudo:
+
+- `systemctl start unit`
+- `systemctl stop unit`
+- `systemctl restart unit`
+- `systemctl reload unit` (reloads unit's config)
+- `systemctl daemon-reload` (scan for changes)
+
+Enabling units i.e. starting at boot
+
+- `systemctl enable unit`
+- `systemctl enable --now unit` to enable and start right away
+- `systemctl disable unit`
+
+### adding a service
+
+In `etc/systemd/system/your.service` we write following
+
+```ini
+[Unit]
+Description=Your service here
+After=network.target #what part of system is required
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always #on-failure option
+RestartSec=1 #interval before restarting
+User=YourUser #important for file access
+ExecStart=/path/to/bin command args
+
+[Install]
+WantedBy=multi-user.target
+```
+
+and start it with `systemctl start your.service`.
+
 ## Disks and Drives
 
 `df -HT`,`lsblk` (no SU), `fdisk -l`, `blkid`
@@ -197,3 +247,4 @@ iptables -A INPUT -i ens3 (NIC) -p tcp (protocol) --dport 80 -m state --state NE
 
 - [Source for basic IPTables work](https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands)
 - [IPtables guide](https://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/)
+- [Systemd from arch wiki](https://wiki.archlinux.org/title/systemd)
