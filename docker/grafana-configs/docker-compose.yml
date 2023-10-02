@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    restart: unless-stopped
+    # if you are running as root then set it to 0
+    # else find the right id with the id -u command
+    #user: '0'
+    ports:
+      - '3000:3000'
+    # adding the mount volume point which we create earlier
+    volumes:
+      - './grafana-data:/var/lib/grafana'
+    # Create persistent volume for your data
+  # Start Prometheus container
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    #user: '0'
+    ports:
+      - '9090:9090'
+    volumes:
+      - './prometheus.yml:/etc/prometheus/prometheus.yml'
+      - './prometheus-data:/prometheus'
