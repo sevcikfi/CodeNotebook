@@ -1,6 +1,6 @@
 ---
 alias:
-tag: IT/languages CodeNotebook 
+tag: IT/DevOps IT/technologies CodeNotebook
 ---
 
 # Ansible

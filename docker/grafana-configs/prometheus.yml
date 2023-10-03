@@ -41,9 +41,9 @@ scrape_configs:
         labels:
           group: 'canary'
 
-  #- job_name: 'docker'
+  - job_name: 'docker'
          # metrics_path defaults to '/metrics'
          # scheme defaults to 'http'.
 
-   # static_configs:
-   #   - targets: ['localhost:9323']
+    static_configs:
+      - targets: ['localhost:9323']

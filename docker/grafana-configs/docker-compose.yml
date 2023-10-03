@@ -21,5 +21,6 @@ services:
     ports:
       - '9090:9090'
     volumes:
+      #touch prometheus.yml or it make a folder with the same name
       - './prometheus.yml:/etc/prometheus/prometheus.yml'
       - './prometheus-data:/prometheus'
