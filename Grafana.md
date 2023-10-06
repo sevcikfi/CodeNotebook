@@ -47,6 +47,7 @@ cd node_exporter-*.*-amd64
 ./node_exporter
 ```
 
+
 You may verify metrics are accessible with `curl http://localhost:9100/metrics`
 
 Node Exporter will stop working once you exit the terminal. To make it run 24/7 even after reboot, write the following into `/etc/systemd/system/node-exporter.service`
