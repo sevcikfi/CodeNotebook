@@ -123,12 +123,14 @@ cd project.git
 git init --bare
 ```
 
-Now either clone the repo or add the repo as one of your remotes.
+Now either clone the repo or add the repo as one of your remotes. The last one is standard ssh syntax for when you need to specify port without port forwarding or tunelling AND you don't have set up `.ssh-config` for such host with the port. 
 
 ```bash
 git remote add origin git@server:/some/dir/project.git
 #or
 git clone git@server:/srv/git/project.git
+#or
+git clone ssh://git@IP/hostname:port/some/project.git
 ```
 
 To secure the `git` user against abuse, prepend each key with following:
