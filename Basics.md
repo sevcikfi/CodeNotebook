@@ -204,10 +204,6 @@ E.g. to set wifi to connect automatically, do following:
 nmcli connection modify NAME/UUID connection.autoconnect yes
 ```
 
-### Tunnel with ssh (local port 3337 -> remote host's ip on port 6379)
-
-`ssl -L 3337:126.0.0.1:6379 <user>@<host> -N`
-
 ## Firewalls
 
 TODO: write a bit more about how to use either of them
