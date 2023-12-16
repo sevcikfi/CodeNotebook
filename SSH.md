@@ -19,9 +19,21 @@ If your keys don't live in expected places e.g. `.ssh/key name` or aren't made a
 
 `ssh -i ~/.ssh/key user@host`
 
-### Tunnel through to another host
+### SSH jump through to another host
 
 `ssh -J host1 host2`
+
+### SSH tunneling (port-forward and reverse proxy) 
+
+```bash
+ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
+#or
+ssh -R [REMOTE:]REMOTE_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
+```
+
+Binds local 3336 to db.interla 3306 via public.host: `ssh -L 3336:db.internal:3306 user@public.host`
+
+Bind remote 8080 at remote.host to 3000 on localhost: `ssh -R 8080:127.0.0.1:3000 -N -f user@remote.host`
 
 ### Generating keys
 
@@ -126,3 +138,4 @@ AllowAgentForwarding yes #for ssh-agent forwarding allowing SSO over multiple co
 - [keygen](https://www.ssh.com/academy/ssh/keygen) and [add](https://www.ssh.com/academy/ssh/add) from ssh.com
 - [copy-id](https://www.ssh.com/academy/ssh/copy-id)
 - [copy-id-eq](https://chrisjhart.com/Windows-10-ssh-copy-id/) and [Scott](https://www.hanselman.com/blog/how-to-use-windows-10s-builtin-openssh-to-automatically-ssh-into-a-remote-linux-machine)
+- [SSH tunneling](https://linuxize.com/post/how-to-setup-ssh-tunneling/)
