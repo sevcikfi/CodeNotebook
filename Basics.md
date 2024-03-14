@@ -175,7 +175,7 @@ to mount `sudo mount /dev/sdxn /where/to`
 in `/etc/fstab` add entry and do `mount -a`
 
 ```text
-#FS,LABEL= or UUID=  /mnt/pnt/  fstype  options  dump  pass 
+#FS,LABEL= or UUID=  /mnt/pnt/  fstype  options  dump  pass
 LABEL=MY_BACKUP    /mount/point  ext4  defaults   1     2
 ```
 
