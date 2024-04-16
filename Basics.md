@@ -239,6 +239,22 @@ To add traffic through, modify following; for Oracle Cloud VM Firewall (INPUT on
 iptables -A INPUT -i ens3 (NIC) -p tcp (protocol) --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
 ```
 
+### terminal colours
+
+- https://docs.rockylinux.org/gemstones/string_color/
+- https://opensource.com/article/19/9/linux-terminal-colors
+- https://blog.icod.de/2023/11/26/how-to-have-a-nice-looking-prompt-in-rocky-linux/
+- https://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment
+- https://student.cs.uwaterloo.ca/~cs452/terminal.html
+
+```bash
+#custom
+    PS1='\e[33;1m\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\]: \[\033[01;34m\]\W\e[0m\$ '
+#default deb
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+```
+
+
 ## Source
 
 - [Source for basic IPTables work](https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands)
